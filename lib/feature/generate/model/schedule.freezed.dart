@@ -14,22 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
-  return _Schedule.fromJson(json);
-}
-
 /// @nodoc
 class _$ScheduleTearOff {
   const _$ScheduleTearOff();
 
-  _Schedule call({List<Day> days = const []}) {
+  _Schedule call({List<Day> days = const <Day>[]}) {
     return _Schedule(
       days: days,
     );
-  }
-
-  Schedule fromJson(Map<String, Object?> json) {
-    return Schedule.fromJson(json);
   }
 }
 
@@ -40,7 +32,6 @@ const $Schedule = _$ScheduleTearOff();
 mixin _$Schedule {
   List<Day> get days => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ScheduleCopyWith<Schedule> get copyWith =>
       throw _privateConstructorUsedError;
@@ -105,12 +96,9 @@ class __$ScheduleCopyWithImpl<$Res> extends _$ScheduleCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_Schedule implements _Schedule {
-  const _$_Schedule({this.days = const []});
 
-  factory _$_Schedule.fromJson(Map<String, dynamic> json) =>
-      _$$_ScheduleFromJson(json);
+class _$_Schedule implements _Schedule {
+  const _$_Schedule({this.days = const <Day>[]});
 
   @JsonKey()
   @override
@@ -137,17 +125,10 @@ class _$_Schedule implements _Schedule {
   @override
   _$ScheduleCopyWith<_Schedule> get copyWith =>
       __$ScheduleCopyWithImpl<_Schedule>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ScheduleToJson(this);
-  }
 }
 
 abstract class _Schedule implements Schedule {
   const factory _Schedule({List<Day> days}) = _$_Schedule;
-
-  factory _Schedule.fromJson(Map<String, dynamic> json) = _$_Schedule.fromJson;
 
   @override
   List<Day> get days;

@@ -14,25 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Day _$DayFromJson(Map<String, dynamic> json) {
-  return _Day.fromJson(json);
-}
-
 /// @nodoc
 class _$DayTearOff {
   const _$DayTearOff();
 
   _Day call(
-      {required String caption, List<Pair> pairs = const [], String? hash}) {
+      {required String caption,
+      List<Pair> pairs = const <Pair>[],
+      String? hash}) {
     return _Day(
       caption: caption,
       pairs: pairs,
       hash: hash,
     );
-  }
-
-  Day fromJson(Map<String, Object?> json) {
-    return Day.fromJson(json);
   }
 }
 
@@ -45,7 +39,6 @@ mixin _$Day {
   List<Pair> get pairs => throw _privateConstructorUsedError;
   String? get hash => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DayCopyWith<Day> get copyWith => throw _privateConstructorUsedError;
 }
@@ -129,11 +122,9 @@ class __$DayCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_Day implements _Day {
-  _$_Day({required this.caption, this.pairs = const [], this.hash});
 
-  factory _$_Day.fromJson(Map<String, dynamic> json) => _$$_DayFromJson(json);
+class _$_Day implements _Day {
+  _$_Day({required this.caption, this.pairs = const <Pair>[], this.hash});
 
   @override
   final String caption;
@@ -169,18 +160,11 @@ class _$_Day implements _Day {
   @override
   _$DayCopyWith<_Day> get copyWith =>
       __$DayCopyWithImpl<_Day>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_DayToJson(this);
-  }
 }
 
 abstract class _Day implements Day {
   factory _Day({required String caption, List<Pair> pairs, String? hash}) =
       _$_Day;
-
-  factory _Day.fromJson(Map<String, dynamic> json) = _$_Day.fromJson;
 
   @override
   String get caption;

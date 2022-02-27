@@ -1,10 +1,9 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/feature/generate/model/day.dart';
-import 'package:schedule/feature/generate/model/schedule.dart';
 import 'package:schedule/feature/generate/model/pair.dart';
+import 'package:schedule/feature/generate/model/schedule.dart';
 import 'package:stream_bloc/stream_bloc.dart';
 import 'package:uuid/uuid.dart';
 
@@ -21,6 +20,8 @@ class GenerateState with _$GenerateState {
   const factory GenerateState.changed(Schedule schedule) = GenerateChangedState;
 
   const factory GenerateState.uploaded(Schedule schedule) = _UploadedState;
+
+  const factory GenerateState.error(Schedule schedule) = _ErrorState;
 }
 
 @freezed
@@ -90,25 +91,36 @@ class GenerateBloc extends StreamBloc<GenerateEvent, GenerateState> {
       );
 
   Stream<GenerateState> _addDay(final String caption) async* {
-    final s = state.schedule;
-    final days = List<Day>.from(s.days);
-    days.add(
-      Day(
-        caption: caption,
-        pairs: [const Pair(title: '', auditory: '', additional: '')],
-        hash: const Uuid().v4(),
-      ),
-    );
-    yield GenerateState.added(Schedule(days: days));
+    try {
+      final s = state.schedule;
+      final days = List<Day>.from(s.days)
+        ..add(
+          Day(
+            caption: caption,
+            pairs: [
+              const Pair(
+                title: '',
+                auditory: '',
+                additional: '',
+              ),
+            ],
+            hash: const Uuid().v4(),
+          ),
+        );
+      yield GenerateState.added(Schedule(days: days));
+    } on Object catch (_) {
+      yield GenerateState.error(state.schedule);
+    }
   }
 
   Stream<GenerateState> _removeDay(final Day day) async* {
-    final s = state.schedule;
-    log(s.days.toString());
-    final days = List<Day>.of(s.days);
-    days.remove(day);
-    log(days.toString());
-    yield _AddedState(Schedule(days: days));
+    try {
+      final s = state.schedule;
+      final days = List<Day>.of(s.days)..remove(day);
+      yield _AddedState(Schedule(days: days));
+    } on Object catch (_) {
+      yield GenerateState.error(state.schedule);
+    }
   }
 
   Stream<GenerateState> _addPair({
@@ -117,32 +129,44 @@ class GenerateBloc extends StreamBloc<GenerateEvent, GenerateState> {
     required String additional,
     required Day day,
   }) async* {
-    final s = state.schedule;
-    final index = s.days.indexOf(day);
-    day.pairs.add(
-      Pair(
-        title: title,
-        auditory: auditory,
-        additional: additional,
-      ),
-    );
-    s.days[index] = day;
-    yield _AddedState(s);
+    try {
+      final s = state.schedule;
+      final index = s.days.indexOf(day);
+      day.pairs.add(
+        Pair(
+          title: title,
+          auditory: auditory,
+          additional: additional,
+        ),
+      );
+      s.days[index] = day;
+      yield _AddedState(s);
+    } on Object catch (_) {
+      yield GenerateState.error(state.schedule);
+    }
   }
 
   Stream<GenerateState> _removePair({
     required final Day day,
     required final Pair pair,
   }) async* {
-    final s = state.schedule;
-    final index = s.days.indexOf(day);
-    day.pairs.retainWhere((element) => element != pair);
-    s.days[index] = day;
-    yield _AddedState(s);
+    try {
+      final s = state.schedule;
+      final index = s.days.indexOf(day);
+      day.pairs.retainWhere((element) => element != pair);
+      s.days[index] = day;
+      yield _AddedState(s);
+    } on Object catch (_) {
+      yield GenerateState.error(state.schedule);
+    }
   }
 
   Stream<GenerateState> _handleUpload(Schedule schedule) async* {
-    yield _UploadedState(schedule);
+    try {
+      yield _UploadedState(schedule);
+    } on Object catch (_) {
+      yield GenerateState.error(state.schedule);
+    }
   }
 
   Stream<GenerateState> _changePair({
@@ -150,21 +174,29 @@ class GenerateBloc extends StreamBloc<GenerateEvent, GenerateState> {
     required Pair newPair,
     required Day day,
   }) async* {
-    final s = state.schedule;
-    final days = List<Day>.from(s.days);
-    final index = days.indexOf(day);
-    final pIndex = days[index].pairs.indexOf(oldPair);
-    days[index].pairs[pIndex] = newPair;
-    yield GenerateState.added(Schedule(days: days));
+    try {
+      final s = state.schedule;
+      final days = List<Day>.from(s.days);
+      final index = days.indexOf(day);
+      final pIndex = days[index].pairs.indexOf(oldPair);
+      days[index].pairs[pIndex] = newPair;
+      yield GenerateState.added(Schedule(days: days));
+    } on Object catch (_) {
+      yield GenerateState.error(state.schedule);
+    }
   }
 
   Stream<GenerateState> _changeDay({
     required Day oldDay,
     required Day newDay,
   }) async* {
-    final s = state.schedule;
-    final index = s.days.indexOf(oldDay);
-    s.days[index] = newDay;
-    yield GenerateState.added(s);
+    try {
+      final s = state.schedule;
+      final index = s.days.indexOf(oldDay);
+      s.days[index] = newDay;
+      yield GenerateState.added(s);
+    } on Object catch (_) {
+      yield GenerateState.error(state.schedule);
+    }
   }
 }

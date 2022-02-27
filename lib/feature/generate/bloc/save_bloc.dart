@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -40,7 +39,7 @@ class SaveBloc extends StreamBloc<SaveEvent, SaveState> {
     required String filename,
     required String content,
   }) async* {
-    FileSaver.save(
+    await FileSaver.save(
       filename: filename,
       content: content,
     );

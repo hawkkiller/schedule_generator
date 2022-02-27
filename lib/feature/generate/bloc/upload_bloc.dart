@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io' if (dart.io) 'dart:html';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:schedule/feature/generate/model/schedule.dart';
 import 'package:stream_bloc/stream_bloc.dart';
-
-import '../model/schedule.dart';
 
 part 'upload_bloc.freezed.dart';
 
@@ -46,20 +45,20 @@ class UploadBloc extends StreamBloc<UploadEvent, UploadState> {
       final bytes = file.bytes;
       if (bytes != null) {
         final json = utf8.decode(bytes);
-        log(json.toString());
-        final schedule = Schedule.fromJson(jsonDecode(json));
+        final schedule =
+            Schedule.fromJson(jsonDecode(json) as Map<String, dynamic>);
         debugPrint(schedule.toString());
         yield UploadedState(schedule);
       } else {
         yield const UploadErrorState();
       }
     } else {
-      final File fileIO = File(file.path!);
+      final fileIO = File(file.path!);
       final bytes = await fileIO.readAsBytes();
       final json = utf8.decode(bytes);
-      final schedule = Schedule.fromJson(jsonDecode(json));
+      final schedule =
+          Schedule.fromJson(jsonDecode(json) as Map<String, dynamic>);
       yield UploadedState(schedule);
     }
-
   }
 }
