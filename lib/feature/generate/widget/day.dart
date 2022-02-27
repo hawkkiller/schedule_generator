@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedule/feature/generate/bloc/generate_bloc.dart';
@@ -74,8 +74,8 @@ class _DayWidgetState extends State<DayWidget> {
             color: CupertinoColors.systemBlue,
           ),
           ...widget.day.pairs
-              .map(
-                (e) => PairWidget(
+              .mapIndexed(
+                (i,e) => PairWidget(
                   onChange: (p) {
                     context.read<GenerateBloc>().add(
                           GenerateEvent.changePair(

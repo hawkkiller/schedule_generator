@@ -22,10 +22,12 @@ Day _$DayFromJson(Map<String, dynamic> json) {
 class _$DayTearOff {
   const _$DayTearOff();
 
-  _Day call({required String caption, List<Pair> pairs = const []}) {
+  _Day call(
+      {required String caption, List<Pair> pairs = const [], String? hash}) {
     return _Day(
       caption: caption,
       pairs: pairs,
+      hash: hash,
     );
   }
 
@@ -41,6 +43,7 @@ const $Day = _$DayTearOff();
 mixin _$Day {
   String get caption => throw _privateConstructorUsedError;
   List<Pair> get pairs => throw _privateConstructorUsedError;
+  String? get hash => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +54,7 @@ mixin _$Day {
 abstract class $DayCopyWith<$Res> {
   factory $DayCopyWith(Day value, $Res Function(Day) then) =
       _$DayCopyWithImpl<$Res>;
-  $Res call({String caption, List<Pair> pairs});
+  $Res call({String caption, List<Pair> pairs, String? hash});
 }
 
 /// @nodoc
@@ -66,6 +69,7 @@ class _$DayCopyWithImpl<$Res> implements $DayCopyWith<$Res> {
   $Res call({
     Object? caption = freezed,
     Object? pairs = freezed,
+    Object? hash = freezed,
   }) {
     return _then(_value.copyWith(
       caption: caption == freezed
@@ -76,6 +80,10 @@ class _$DayCopyWithImpl<$Res> implements $DayCopyWith<$Res> {
           ? _value.pairs
           : pairs // ignore: cast_nullable_to_non_nullable
               as List<Pair>,
+      hash: hash == freezed
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -85,7 +93,7 @@ abstract class _$DayCopyWith<$Res> implements $DayCopyWith<$Res> {
   factory _$DayCopyWith(_Day value, $Res Function(_Day) then) =
       __$DayCopyWithImpl<$Res>;
   @override
-  $Res call({String caption, List<Pair> pairs});
+  $Res call({String caption, List<Pair> pairs, String? hash});
 }
 
 /// @nodoc
@@ -101,6 +109,7 @@ class __$DayCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res>
   $Res call({
     Object? caption = freezed,
     Object? pairs = freezed,
+    Object? hash = freezed,
   }) {
     return _then(_Day(
       caption: caption == freezed
@@ -111,6 +120,10 @@ class __$DayCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res>
           ? _value.pairs
           : pairs // ignore: cast_nullable_to_non_nullable
               as List<Pair>,
+      hash: hash == freezed
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -118,7 +131,7 @@ class __$DayCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Day implements _Day {
-  _$_Day({required this.caption, this.pairs = const []});
+  _$_Day({required this.caption, this.pairs = const [], this.hash});
 
   factory _$_Day.fromJson(Map<String, dynamic> json) => _$$_DayFromJson(json);
 
@@ -127,10 +140,12 @@ class _$_Day implements _Day {
   @JsonKey()
   @override
   final List<Pair> pairs;
+  @override
+  final String? hash;
 
   @override
   String toString() {
-    return 'Day(caption: $caption, pairs: $pairs)';
+    return 'Day(caption: $caption, pairs: $pairs, hash: $hash)';
   }
 
   @override
@@ -139,14 +154,16 @@ class _$_Day implements _Day {
         (other.runtimeType == runtimeType &&
             other is _Day &&
             const DeepCollectionEquality().equals(other.caption, caption) &&
-            const DeepCollectionEquality().equals(other.pairs, pairs));
+            const DeepCollectionEquality().equals(other.pairs, pairs) &&
+            const DeepCollectionEquality().equals(other.hash, hash));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(caption),
-      const DeepCollectionEquality().hash(pairs));
+      const DeepCollectionEquality().hash(pairs),
+      const DeepCollectionEquality().hash(hash));
 
   @JsonKey(ignore: true)
   @override
@@ -160,7 +177,8 @@ class _$_Day implements _Day {
 }
 
 abstract class _Day implements Day {
-  factory _Day({required String caption, List<Pair> pairs}) = _$_Day;
+  factory _Day({required String caption, List<Pair> pairs, String? hash}) =
+      _$_Day;
 
   factory _Day.fromJson(Map<String, dynamic> json) = _$_Day.fromJson;
 
@@ -168,6 +186,8 @@ abstract class _Day implements Day {
   String get caption;
   @override
   List<Pair> get pairs;
+  @override
+  String? get hash;
   @override
   @JsonKey(ignore: true)
   _$DayCopyWith<_Day> get copyWith => throw _privateConstructorUsedError;

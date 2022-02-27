@@ -36,6 +36,14 @@ class Generate extends StatelessWidget {
                   }
                 },
                 child: Scaffold(
+                  floatingActionButton: FloatingActionButton(
+                    child: const Icon(Icons.add),
+                    onPressed: () {
+                      context.read<GenerateBloc>().add(
+                            const GenerateEvent.addDay('Day'),
+                          );
+                    },
+                  ),
                   appBar: AppBar(
                     title: const Text('Сгененировать файл расписания'),
                     leading: IconButton(
@@ -58,7 +66,7 @@ class Generate extends StatelessWidget {
                                 ),
                               );
                         },
-                        icon: const Icon(Icons.upload),
+                        icon: const Icon(Icons.download),
                       ),
                     ],
                   ),
@@ -70,9 +78,9 @@ class Generate extends StatelessWidget {
                       return SingleChildScrollView(
                         child: Column(
                           children: [
-                            ...state.schedule.days.mapIndexed(
-                              (i, e) => DayWidget(
-                                key: ValueKey(i),
+                            ...state.schedule.days.map(
+                              (e) => DayWidget(
+                                key: ValueKey(e.hash),
                                 onChange: (p) {
                                   context.read<GenerateBloc>().add(
                                         GenerateEvent.changeDay(
@@ -82,19 +90,6 @@ class Generate extends StatelessWidget {
                                       );
                                 },
                                 day: e,
-                              ),
-                            ),
-                            Center(
-                              child: IconButton(
-                                color: Colors.green,
-                                onPressed: () {
-                                  context.read<GenerateBloc>().add(
-                                        GenerateEvent.addDay('Day ' +
-                                            (state.schedule.days.length + 1)
-                                                .toString()),
-                                      );
-                                },
-                                icon: const Icon(Icons.add),
                               ),
                             ),
                           ],

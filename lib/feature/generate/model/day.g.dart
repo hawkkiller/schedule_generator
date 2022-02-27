@@ -12,9 +12,11 @@ _$_Day _$$_DayFromJson(Map<String, dynamic> json) => _$_Day(
               ?.map((e) => Pair.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      hash: json['hash'] as String?,
     );
 
 Map<String, dynamic> _$$_DayToJson(_$_Day instance) => <String, dynamic>{
       'caption': instance.caption,
       'pairs': instance.pairs,
+      'hash': instance.hash,
     };

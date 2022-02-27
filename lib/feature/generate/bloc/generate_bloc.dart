@@ -6,6 +6,7 @@ import 'package:schedule/feature/generate/model/day.dart';
 import 'package:schedule/feature/generate/model/schedule.dart';
 import 'package:schedule/feature/generate/model/pair.dart';
 import 'package:stream_bloc/stream_bloc.dart';
+import 'package:uuid/uuid.dart';
 
 part 'generate_bloc.freezed.dart';
 
@@ -95,6 +96,7 @@ class GenerateBloc extends StreamBloc<GenerateEvent, GenerateState> {
       Day(
         caption: caption,
         pairs: [const Pair(title: '', auditory: '', additional: '')],
+        hash: const Uuid().v4(),
       ),
     );
     yield GenerateState.added(Schedule(days: days));
@@ -102,8 +104,10 @@ class GenerateBloc extends StreamBloc<GenerateEvent, GenerateState> {
 
   Stream<GenerateState> _removeDay(final Day day) async* {
     final s = state.schedule;
-    final days = List<Day>.from(s.days);
+    log(s.days.toString());
+    final days = List<Day>.of(s.days);
     days.remove(day);
+    log(days.toString());
     yield _AddedState(Schedule(days: days));
   }
 

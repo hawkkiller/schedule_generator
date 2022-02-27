@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io' if (dart.io) 'dart:html';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
@@ -45,7 +46,9 @@ class UploadBloc extends StreamBloc<UploadEvent, UploadState> {
       final bytes = file.bytes;
       if (bytes != null) {
         final json = utf8.decode(bytes);
+        log(json.toString());
         final schedule = Schedule.fromJson(jsonDecode(json));
+        debugPrint(schedule.toString());
         yield UploadedState(schedule);
       } else {
         yield const UploadErrorState();

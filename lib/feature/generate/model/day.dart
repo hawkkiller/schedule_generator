@@ -11,7 +11,19 @@ class Day with _$Day {
   factory Day({
     required String caption,
     @Default([]) List<Pair> pairs,
+    String? hash,
   }) = _Day;
 
-  factory Day.fromJson(Map<String, dynamic> json) => _$DayFromJson(json);
+  factory Day.fromJson(Map<String, dynamic> json) {
+    final pairsJson = json['pairs'] as List;
+    final pairs = <Pair>[];
+    for (final value in pairsJson) {
+      pairs.add(Pair.fromJson(value));
+    }
+    return Day(
+      caption: json['caption'],
+      hash: const Uuid().v4(),
+      pairs: pairs,
+    );
+  }
 }
