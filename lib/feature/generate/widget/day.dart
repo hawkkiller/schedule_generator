@@ -1,11 +1,10 @@
-import 'dart:developer';
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schedule/feature/generate/bloc/generate_bloc.dart';
 import 'package:schedule/feature/generate/model/day.dart';
 import 'package:schedule/feature/generate/widget/pair.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DayWidget extends StatefulWidget {
   const DayWidget({
@@ -40,58 +39,56 @@ class _DayWidgetState extends State<DayWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.lightBlueAccent,
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(5),
-            child: Row(
-              children: [
-                Flexible(
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
+  Widget build(BuildContext context) => Container(
+        decoration: const BoxDecoration(
+          color: Colors.lightBlueAccent,
+        ),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(5),
+              color: CupertinoColors.systemBlue,
+              child: Row(
+                children: [
+                  Flexible(
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                      ),
+                      maxLines: 5,
+                      minLines: 1,
+                      controller: controller,
                     ),
-                    maxLines: 5,
-                    minLines: 1,
-                    controller: controller,
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    context
-                        .read<GenerateBloc>()
-                        .add(GenerateEvent.removeDay(widget.day));
-                  },
-                  icon: const Icon(Icons.close),
-                )
-              ],
+                  IconButton(
+                    onPressed: () {
+                      context
+                          .read<GenerateBloc>()
+                          .add(GenerateEvent.removeDay(widget.day));
+                    },
+                    icon: const Icon(Icons.close),
+                  )
+                ],
+              ),
             ),
-            color: CupertinoColors.systemBlue,
-          ),
-          ...widget.day.pairs
-              .mapIndexed(
-                (i,e) => PairWidget(
-                  onChange: (p) {
-                    context.read<GenerateBloc>().add(
-                          GenerateEvent.changePair(
-                            oldPair: e,
-                            newPair: p,
-                            day: widget.day,
-                          ),
-                        );
-                  },
-                  pair: e,
-                  divider: widget.day.pairs.last != e,
-                ),
-              )
-              .toList(growable: false),
-        ],
-      ),
-    );
-  }
+            ...widget.day.pairs
+                .mapIndexed(
+                  (i, e) => PairWidget(
+                    onChange: (p) {
+                      context.read<GenerateBloc>().add(
+                            GenerateEvent.changePair(
+                              oldPair: e,
+                              newPair: p,
+                              day: widget.day,
+                            ),
+                          );
+                    },
+                    pair: e,
+                    divider: widget.day.pairs.last != e,
+                  ),
+                )
+                .toList(growable: false),
+          ],
+        ),
+      );
 }

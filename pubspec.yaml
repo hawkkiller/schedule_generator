@@ -36,7 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   file_picker: ^4.3.3
   freezed_annotation: ^1.1.0
-  stream_bloc: ^0.3.0
   uuid: ^3.0.5
   flutter_bloc: ^8.0.1
   flutter_lints: ^1.0.4
@@ -92,6 +91,15 @@ flutter:
           weight: 400
         - asset: assets/fonts/Roboto/Roboto-Medium.ttf
           weight: 500
+    - family: SFProRounded
+      fonts:
+        - asset: assets/fonts/SfPro/SF-Pro-Rounded-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/SfPro/SF-Pro-Rounded-Bold.ttf
+          weight: 700
+    - family: SFPro
+      fonts:
+        - asset: assets/fonts/SfPro/SF-Pro-Regular.ttf
 
   # fonts:
   #   - family: Schyler

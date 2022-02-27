@@ -1,10 +1,8 @@
-import 'dart:developer';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/feature/generate/model/day.dart';
 import 'package:schedule/feature/generate/model/pair.dart';
 import 'package:schedule/feature/generate/model/schedule.dart';
-import 'package:stream_bloc/stream_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 part 'generate_bloc.freezed.dart';
@@ -30,73 +28,64 @@ class GenerateEvent with _$GenerateEvent {
 
   const factory GenerateEvent.addDay(
     String caption,
-  ) = _AddDay;
+  ) = _GenerateEventAddDay;
 
   const factory GenerateEvent.removeDay(
     Day day,
-  ) = _RemoveDay;
+  ) = _GenerateEventRemoveDay;
 
   const factory GenerateEvent.addPair({
     required String title,
     required String auditory,
     required String additional,
     required Day day,
-  }) = _AddPair;
+  }) = _GenerateEventAddPair;
 
   const factory GenerateEvent.removePair(
     Pair pair,
     Day day,
-  ) = _RemovePair;
+  ) = _GenerateEventRemovePair;
 
   const factory GenerateEvent.changePair({
     required Pair oldPair,
     required Pair newPair,
     required Day day,
-  }) = _ChangePair;
+  }) = _GenerateEventChangePair;
 
   const factory GenerateEvent.changeDay({
     required Day oldDay,
     required Day newDay,
-  }) = _ChangeDay;
+  }) = _GenerateEventChangeDay;
 
   const factory GenerateEvent.uploadSchedule(Schedule schedule) =
-      _UploadSchedule;
+      _GenerateEventUploadSchedule;
 }
 
-class GenerateBloc extends StreamBloc<GenerateEvent, GenerateState> {
-  GenerateBloc() : super(const GenerateState.initial(Schedule(days: [])));
+class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
+  GenerateBloc() : super(const GenerateState.initial(Schedule(days: []))) {
+    on<GenerateEvent>(
+      (event, emitter) => event.map(
+        addDay: (e) => _addDay(e, emitter),
+        removeDay: (e) => _removeDay(e, emitter),
+        uploadSchedule: (e) => _handleUpload(e, emitter),
+        removePair: (e) => _removePair(e, emitter),
+        addPair: (e) => _addPair(e, emitter),
+        changePair: (e) => _changePair(e, emitter),
+        changeDay: (e) => _changeDay(e, emitter),
+      ),
+    );
+  }
 
-  @override
-  Stream<GenerateState> mapEventToStates(GenerateEvent event) =>
-      event.map<Stream<GenerateState>>(
-        addDay: (d) => _addDay(d.caption),
-        removeDay: (d) => _removeDay(d.day),
-        uploadSchedule: (s) => _handleUpload(s.schedule),
-        removePair: (s) => _removePair(
-          day: s.day,
-          pair: s.pair,
-        ),
-        addPair: (s) => _addPair(
-          additional: s.additional,
-          auditory: s.auditory,
-          title: s.title,
-          day: s.day,
-        ),
-        changePair: (r) => _changePair(
-          day: r.day,
-          newPair: r.newPair,
-          oldPair: r.oldPair,
-        ),
-        changeDay: (c) => _changeDay(oldDay: c.oldDay, newDay: c.newDay),
-      );
-
-  Stream<GenerateState> _addDay(final String caption) async* {
+  Future<void> _addDay(
+    _GenerateEventAddDay event,
+    Emitter emitter,
+  ) async {
     try {
       final s = state.schedule;
       final days = List<Day>.from(s.days)
         ..add(
           Day(
-            caption: caption,
+            caption: event.caption,
             pairs: [
               const Pair(
                 title: '',
@@ -107,96 +96,102 @@ class GenerateBloc extends StreamBloc<GenerateEvent, GenerateState> {
             hash: const Uuid().v4(),
           ),
         );
-      yield GenerateState.added(Schedule(days: days));
+      emitter.call(GenerateState.added(Schedule(days: days)));
     } on Object catch (_) {
-      yield GenerateState.error(state.schedule);
+      emitter.call(GenerateState.error(state.schedule));
     }
   }
 
-  Stream<GenerateState> _removeDay(final Day day) async* {
+  Future<void> _removeDay(
+    _GenerateEventRemoveDay event,
+    Emitter emitter,
+  ) async {
     try {
       final s = state.schedule;
-      final days = List<Day>.of(s.days)..remove(day);
-      yield _AddedState(Schedule(days: days));
+      final days = List<Day>.of(s.days)..remove(event.day);
+      emitter.call(_AddedState(Schedule(days: days)));
     } on Object catch (_) {
-      yield GenerateState.error(state.schedule);
+      emitter.call(GenerateState.error(state.schedule));
     }
   }
 
-  Stream<GenerateState> _addPair({
-    required String title,
-    required String auditory,
-    required String additional,
-    required Day day,
-  }) async* {
+  Future<void> _addPair(
+    _GenerateEventAddPair event,
+    Emitter emitter,
+  ) async {
     try {
       final s = state.schedule;
+      final day = event.day;
       final index = s.days.indexOf(day);
       day.pairs.add(
         Pair(
-          title: title,
-          auditory: auditory,
-          additional: additional,
+          title: event.title,
+          auditory: event.auditory,
+          additional: event.additional,
         ),
       );
       s.days[index] = day;
-      yield _AddedState(s);
+      emitter.call(_AddedState(s));
     } on Object catch (_) {
-      yield GenerateState.error(state.schedule);
+      emitter.call(GenerateState.error(state.schedule));
     }
   }
 
-  Stream<GenerateState> _removePair({
-    required final Day day,
-    required final Pair pair,
-  }) async* {
+  Future<void> _removePair(
+    _GenerateEventRemovePair event,
+    Emitter emitter,
+  ) async {
     try {
       final s = state.schedule;
+      final day = event.day;
       final index = s.days.indexOf(day);
-      day.pairs.retainWhere((element) => element != pair);
+      day.pairs.retainWhere((element) => element != event.pair);
       s.days[index] = day;
-      yield _AddedState(s);
+      emitter.call(_AddedState(s));
     } on Object catch (_) {
-      yield GenerateState.error(state.schedule);
+      emitter.call(GenerateState.error(state.schedule));
     }
   }
 
-  Stream<GenerateState> _handleUpload(Schedule schedule) async* {
+  Future<void> _handleUpload(
+    _GenerateEventUploadSchedule event,
+    Emitter emitter,
+  ) async {
     try {
-      yield _UploadedState(schedule);
+      emitter.call(_UploadedState(event.schedule));
     } on Object catch (_) {
-      yield GenerateState.error(state.schedule);
+      emitter.call(GenerateState.error(state.schedule));
     }
   }
 
-  Stream<GenerateState> _changePair({
-    required Pair oldPair,
-    required Pair newPair,
-    required Day day,
-  }) async* {
+  Future<void> _changePair(
+    _GenerateEventChangePair event,
+    Emitter emitter,
+  ) async {
     try {
       final s = state.schedule;
       final days = List<Day>.from(s.days);
+      final day = event.day;
       final index = days.indexOf(day);
-      final pIndex = days[index].pairs.indexOf(oldPair);
-      days[index].pairs[pIndex] = newPair;
-      yield GenerateState.added(Schedule(days: days));
+      final pIndex = days[index].pairs.indexOf(event.oldPair);
+      days[index].pairs[pIndex] = event.newPair;
+      emitter.call(GenerateState.added(Schedule(days: days)));
     } on Object catch (_) {
-      yield GenerateState.error(state.schedule);
+      emitter.call(GenerateState.error(state.schedule));
     }
   }
 
-  Stream<GenerateState> _changeDay({
-    required Day oldDay,
-    required Day newDay,
-  }) async* {
+  Future<void> _changeDay(
+    _GenerateEventChangeDay event,
+    Emitter emitter,
+  ) async {
     try {
       final s = state.schedule;
-      final index = s.days.indexOf(oldDay);
-      s.days[index] = newDay;
-      yield GenerateState.added(s);
+      final index = s.days.indexOf(event.oldDay);
+      s.days[index] = event.newDay;
+      emitter.call(GenerateState.added(s));
     } on Object catch (_) {
-      yield GenerateState.error(state.schedule);
+      emitter.call(GenerateState.error(state.schedule));
     }
   }
 }

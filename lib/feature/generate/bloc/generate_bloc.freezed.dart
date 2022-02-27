@@ -961,24 +961,24 @@ abstract class _ErrorState extends GenerateState {
 class _$GenerateEventTearOff {
   const _$GenerateEventTearOff();
 
-  _AddDay addDay(String caption) {
-    return _AddDay(
+  _GenerateEventAddDay addDay(String caption) {
+    return _GenerateEventAddDay(
       caption,
     );
   }
 
-  _RemoveDay removeDay(Day day) {
-    return _RemoveDay(
+  _GenerateEventRemoveDay removeDay(Day day) {
+    return _GenerateEventRemoveDay(
       day,
     );
   }
 
-  _AddPair addPair(
+  _GenerateEventAddPair addPair(
       {required String title,
       required String auditory,
       required String additional,
       required Day day}) {
-    return _AddPair(
+    return _GenerateEventAddPair(
       title: title,
       auditory: auditory,
       additional: additional,
@@ -986,31 +986,32 @@ class _$GenerateEventTearOff {
     );
   }
 
-  _RemovePair removePair(Pair pair, Day day) {
-    return _RemovePair(
+  _GenerateEventRemovePair removePair(Pair pair, Day day) {
+    return _GenerateEventRemovePair(
       pair,
       day,
     );
   }
 
-  _ChangePair changePair(
+  _GenerateEventChangePair changePair(
       {required Pair oldPair, required Pair newPair, required Day day}) {
-    return _ChangePair(
+    return _GenerateEventChangePair(
       oldPair: oldPair,
       newPair: newPair,
       day: day,
     );
   }
 
-  _ChangeDay changeDay({required Day oldDay, required Day newDay}) {
-    return _ChangeDay(
+  _GenerateEventChangeDay changeDay(
+      {required Day oldDay, required Day newDay}) {
+    return _GenerateEventChangeDay(
       oldDay: oldDay,
       newDay: newDay,
     );
   }
 
-  _UploadSchedule uploadSchedule(Schedule schedule) {
-    return _UploadSchedule(
+  _GenerateEventUploadSchedule uploadSchedule(Schedule schedule) {
+    return _GenerateEventUploadSchedule(
       schedule,
     );
   }
@@ -1061,35 +1062,36 @@ mixin _$GenerateEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddDay value) addDay,
-    required TResult Function(_RemoveDay value) removeDay,
-    required TResult Function(_AddPair value) addPair,
-    required TResult Function(_RemovePair value) removePair,
-    required TResult Function(_ChangePair value) changePair,
-    required TResult Function(_ChangeDay value) changeDay,
-    required TResult Function(_UploadSchedule value) uploadSchedule,
+    required TResult Function(_GenerateEventAddDay value) addDay,
+    required TResult Function(_GenerateEventRemoveDay value) removeDay,
+    required TResult Function(_GenerateEventAddPair value) addPair,
+    required TResult Function(_GenerateEventRemovePair value) removePair,
+    required TResult Function(_GenerateEventChangePair value) changePair,
+    required TResult Function(_GenerateEventChangeDay value) changeDay,
+    required TResult Function(_GenerateEventUploadSchedule value)
+        uploadSchedule,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1113,26 +1115,29 @@ class _$GenerateEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AddDayCopyWith<$Res> {
-  factory _$AddDayCopyWith(_AddDay value, $Res Function(_AddDay) then) =
-      __$AddDayCopyWithImpl<$Res>;
+abstract class _$GenerateEventAddDayCopyWith<$Res> {
+  factory _$GenerateEventAddDayCopyWith(_GenerateEventAddDay value,
+          $Res Function(_GenerateEventAddDay) then) =
+      __$GenerateEventAddDayCopyWithImpl<$Res>;
   $Res call({String caption});
 }
 
 /// @nodoc
-class __$AddDayCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
-    implements _$AddDayCopyWith<$Res> {
-  __$AddDayCopyWithImpl(_AddDay _value, $Res Function(_AddDay) _then)
-      : super(_value, (v) => _then(v as _AddDay));
+class __$GenerateEventAddDayCopyWithImpl<$Res>
+    extends _$GenerateEventCopyWithImpl<$Res>
+    implements _$GenerateEventAddDayCopyWith<$Res> {
+  __$GenerateEventAddDayCopyWithImpl(
+      _GenerateEventAddDay _value, $Res Function(_GenerateEventAddDay) _then)
+      : super(_value, (v) => _then(v as _GenerateEventAddDay));
 
   @override
-  _AddDay get _value => super._value as _AddDay;
+  _GenerateEventAddDay get _value => super._value as _GenerateEventAddDay;
 
   @override
   $Res call({
     Object? caption = freezed,
   }) {
-    return _then(_AddDay(
+    return _then(_GenerateEventAddDay(
       caption == freezed
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -1143,8 +1148,8 @@ class __$AddDayCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddDay extends _AddDay {
-  const _$_AddDay(this.caption) : super._();
+class _$_GenerateEventAddDay extends _GenerateEventAddDay {
+  const _$_GenerateEventAddDay(this.caption) : super._();
 
   @override
   final String caption;
@@ -1158,7 +1163,7 @@ class _$_AddDay extends _AddDay {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddDay &&
+            other is _GenerateEventAddDay &&
             const DeepCollectionEquality().equals(other.caption, caption));
   }
 
@@ -1168,8 +1173,9 @@ class _$_AddDay extends _AddDay {
 
   @JsonKey(ignore: true)
   @override
-  _$AddDayCopyWith<_AddDay> get copyWith =>
-      __$AddDayCopyWithImpl<_AddDay>(this, _$identity);
+  _$GenerateEventAddDayCopyWith<_GenerateEventAddDay> get copyWith =>
+      __$GenerateEventAddDayCopyWithImpl<_GenerateEventAddDay>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1224,13 +1230,14 @@ class _$_AddDay extends _AddDay {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddDay value) addDay,
-    required TResult Function(_RemoveDay value) removeDay,
-    required TResult Function(_AddPair value) addPair,
-    required TResult Function(_RemovePair value) removePair,
-    required TResult Function(_ChangePair value) changePair,
-    required TResult Function(_ChangeDay value) changeDay,
-    required TResult Function(_UploadSchedule value) uploadSchedule,
+    required TResult Function(_GenerateEventAddDay value) addDay,
+    required TResult Function(_GenerateEventRemoveDay value) removeDay,
+    required TResult Function(_GenerateEventAddPair value) addPair,
+    required TResult Function(_GenerateEventRemovePair value) removePair,
+    required TResult Function(_GenerateEventChangePair value) changePair,
+    required TResult Function(_GenerateEventChangeDay value) changeDay,
+    required TResult Function(_GenerateEventUploadSchedule value)
+        uploadSchedule,
   }) {
     return addDay(this);
   }
@@ -1238,13 +1245,13 @@ class _$_AddDay extends _AddDay {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
   }) {
     return addDay?.call(this);
   }
@@ -1252,13 +1259,13 @@ class _$_AddDay extends _AddDay {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
     required TResult orElse(),
   }) {
     if (addDay != null) {
@@ -1268,39 +1275,42 @@ class _$_AddDay extends _AddDay {
   }
 }
 
-abstract class _AddDay extends GenerateEvent {
-  const factory _AddDay(String caption) = _$_AddDay;
-  const _AddDay._() : super._();
+abstract class _GenerateEventAddDay extends GenerateEvent {
+  const factory _GenerateEventAddDay(String caption) = _$_GenerateEventAddDay;
+  const _GenerateEventAddDay._() : super._();
 
   String get caption;
   @JsonKey(ignore: true)
-  _$AddDayCopyWith<_AddDay> get copyWith => throw _privateConstructorUsedError;
+  _$GenerateEventAddDayCopyWith<_GenerateEventAddDay> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$RemoveDayCopyWith<$Res> {
-  factory _$RemoveDayCopyWith(
-          _RemoveDay value, $Res Function(_RemoveDay) then) =
-      __$RemoveDayCopyWithImpl<$Res>;
+abstract class _$GenerateEventRemoveDayCopyWith<$Res> {
+  factory _$GenerateEventRemoveDayCopyWith(_GenerateEventRemoveDay value,
+          $Res Function(_GenerateEventRemoveDay) then) =
+      __$GenerateEventRemoveDayCopyWithImpl<$Res>;
   $Res call({Day day});
 
   $DayCopyWith<$Res> get day;
 }
 
 /// @nodoc
-class __$RemoveDayCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
-    implements _$RemoveDayCopyWith<$Res> {
-  __$RemoveDayCopyWithImpl(_RemoveDay _value, $Res Function(_RemoveDay) _then)
-      : super(_value, (v) => _then(v as _RemoveDay));
+class __$GenerateEventRemoveDayCopyWithImpl<$Res>
+    extends _$GenerateEventCopyWithImpl<$Res>
+    implements _$GenerateEventRemoveDayCopyWith<$Res> {
+  __$GenerateEventRemoveDayCopyWithImpl(_GenerateEventRemoveDay _value,
+      $Res Function(_GenerateEventRemoveDay) _then)
+      : super(_value, (v) => _then(v as _GenerateEventRemoveDay));
 
   @override
-  _RemoveDay get _value => super._value as _RemoveDay;
+  _GenerateEventRemoveDay get _value => super._value as _GenerateEventRemoveDay;
 
   @override
   $Res call({
     Object? day = freezed,
   }) {
-    return _then(_RemoveDay(
+    return _then(_GenerateEventRemoveDay(
       day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
@@ -1318,8 +1328,8 @@ class __$RemoveDayCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RemoveDay extends _RemoveDay {
-  const _$_RemoveDay(this.day) : super._();
+class _$_GenerateEventRemoveDay extends _GenerateEventRemoveDay {
+  const _$_GenerateEventRemoveDay(this.day) : super._();
 
   @override
   final Day day;
@@ -1333,7 +1343,7 @@ class _$_RemoveDay extends _RemoveDay {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RemoveDay &&
+            other is _GenerateEventRemoveDay &&
             const DeepCollectionEquality().equals(other.day, day));
   }
 
@@ -1343,8 +1353,9 @@ class _$_RemoveDay extends _RemoveDay {
 
   @JsonKey(ignore: true)
   @override
-  _$RemoveDayCopyWith<_RemoveDay> get copyWith =>
-      __$RemoveDayCopyWithImpl<_RemoveDay>(this, _$identity);
+  _$GenerateEventRemoveDayCopyWith<_GenerateEventRemoveDay> get copyWith =>
+      __$GenerateEventRemoveDayCopyWithImpl<_GenerateEventRemoveDay>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1399,13 +1410,14 @@ class _$_RemoveDay extends _RemoveDay {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddDay value) addDay,
-    required TResult Function(_RemoveDay value) removeDay,
-    required TResult Function(_AddPair value) addPair,
-    required TResult Function(_RemovePair value) removePair,
-    required TResult Function(_ChangePair value) changePair,
-    required TResult Function(_ChangeDay value) changeDay,
-    required TResult Function(_UploadSchedule value) uploadSchedule,
+    required TResult Function(_GenerateEventAddDay value) addDay,
+    required TResult Function(_GenerateEventRemoveDay value) removeDay,
+    required TResult Function(_GenerateEventAddPair value) addPair,
+    required TResult Function(_GenerateEventRemovePair value) removePair,
+    required TResult Function(_GenerateEventChangePair value) changePair,
+    required TResult Function(_GenerateEventChangeDay value) changeDay,
+    required TResult Function(_GenerateEventUploadSchedule value)
+        uploadSchedule,
   }) {
     return removeDay(this);
   }
@@ -1413,13 +1425,13 @@ class _$_RemoveDay extends _RemoveDay {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
   }) {
     return removeDay?.call(this);
   }
@@ -1427,13 +1439,13 @@ class _$_RemoveDay extends _RemoveDay {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
     required TResult orElse(),
   }) {
     if (removeDay != null) {
@@ -1443,33 +1455,36 @@ class _$_RemoveDay extends _RemoveDay {
   }
 }
 
-abstract class _RemoveDay extends GenerateEvent {
-  const factory _RemoveDay(Day day) = _$_RemoveDay;
-  const _RemoveDay._() : super._();
+abstract class _GenerateEventRemoveDay extends GenerateEvent {
+  const factory _GenerateEventRemoveDay(Day day) = _$_GenerateEventRemoveDay;
+  const _GenerateEventRemoveDay._() : super._();
 
   Day get day;
   @JsonKey(ignore: true)
-  _$RemoveDayCopyWith<_RemoveDay> get copyWith =>
+  _$GenerateEventRemoveDayCopyWith<_GenerateEventRemoveDay> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AddPairCopyWith<$Res> {
-  factory _$AddPairCopyWith(_AddPair value, $Res Function(_AddPair) then) =
-      __$AddPairCopyWithImpl<$Res>;
+abstract class _$GenerateEventAddPairCopyWith<$Res> {
+  factory _$GenerateEventAddPairCopyWith(_GenerateEventAddPair value,
+          $Res Function(_GenerateEventAddPair) then) =
+      __$GenerateEventAddPairCopyWithImpl<$Res>;
   $Res call({String title, String auditory, String additional, Day day});
 
   $DayCopyWith<$Res> get day;
 }
 
 /// @nodoc
-class __$AddPairCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
-    implements _$AddPairCopyWith<$Res> {
-  __$AddPairCopyWithImpl(_AddPair _value, $Res Function(_AddPair) _then)
-      : super(_value, (v) => _then(v as _AddPair));
+class __$GenerateEventAddPairCopyWithImpl<$Res>
+    extends _$GenerateEventCopyWithImpl<$Res>
+    implements _$GenerateEventAddPairCopyWith<$Res> {
+  __$GenerateEventAddPairCopyWithImpl(
+      _GenerateEventAddPair _value, $Res Function(_GenerateEventAddPair) _then)
+      : super(_value, (v) => _then(v as _GenerateEventAddPair));
 
   @override
-  _AddPair get _value => super._value as _AddPair;
+  _GenerateEventAddPair get _value => super._value as _GenerateEventAddPair;
 
   @override
   $Res call({
@@ -1478,7 +1493,7 @@ class __$AddPairCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
     Object? additional = freezed,
     Object? day = freezed,
   }) {
-    return _then(_AddPair(
+    return _then(_GenerateEventAddPair(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -1508,8 +1523,8 @@ class __$AddPairCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddPair extends _AddPair {
-  const _$_AddPair(
+class _$_GenerateEventAddPair extends _GenerateEventAddPair {
+  const _$_GenerateEventAddPair(
       {required this.title,
       required this.auditory,
       required this.additional,
@@ -1534,7 +1549,7 @@ class _$_AddPair extends _AddPair {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddPair &&
+            other is _GenerateEventAddPair &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.auditory, auditory) &&
             const DeepCollectionEquality()
@@ -1552,8 +1567,9 @@ class _$_AddPair extends _AddPair {
 
   @JsonKey(ignore: true)
   @override
-  _$AddPairCopyWith<_AddPair> get copyWith =>
-      __$AddPairCopyWithImpl<_AddPair>(this, _$identity);
+  _$GenerateEventAddPairCopyWith<_GenerateEventAddPair> get copyWith =>
+      __$GenerateEventAddPairCopyWithImpl<_GenerateEventAddPair>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1608,13 +1624,14 @@ class _$_AddPair extends _AddPair {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddDay value) addDay,
-    required TResult Function(_RemoveDay value) removeDay,
-    required TResult Function(_AddPair value) addPair,
-    required TResult Function(_RemovePair value) removePair,
-    required TResult Function(_ChangePair value) changePair,
-    required TResult Function(_ChangeDay value) changeDay,
-    required TResult Function(_UploadSchedule value) uploadSchedule,
+    required TResult Function(_GenerateEventAddDay value) addDay,
+    required TResult Function(_GenerateEventRemoveDay value) removeDay,
+    required TResult Function(_GenerateEventAddPair value) addPair,
+    required TResult Function(_GenerateEventRemovePair value) removePair,
+    required TResult Function(_GenerateEventChangePair value) changePair,
+    required TResult Function(_GenerateEventChangeDay value) changeDay,
+    required TResult Function(_GenerateEventUploadSchedule value)
+        uploadSchedule,
   }) {
     return addPair(this);
   }
@@ -1622,13 +1639,13 @@ class _$_AddPair extends _AddPair {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
   }) {
     return addPair?.call(this);
   }
@@ -1636,13 +1653,13 @@ class _$_AddPair extends _AddPair {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
     required TResult orElse(),
   }) {
     if (addPair != null) {
@@ -1652,28 +1669,28 @@ class _$_AddPair extends _AddPair {
   }
 }
 
-abstract class _AddPair extends GenerateEvent {
-  const factory _AddPair(
+abstract class _GenerateEventAddPair extends GenerateEvent {
+  const factory _GenerateEventAddPair(
       {required String title,
       required String auditory,
       required String additional,
-      required Day day}) = _$_AddPair;
-  const _AddPair._() : super._();
+      required Day day}) = _$_GenerateEventAddPair;
+  const _GenerateEventAddPair._() : super._();
 
   String get title;
   String get auditory;
   String get additional;
   Day get day;
   @JsonKey(ignore: true)
-  _$AddPairCopyWith<_AddPair> get copyWith =>
+  _$GenerateEventAddPairCopyWith<_GenerateEventAddPair> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$RemovePairCopyWith<$Res> {
-  factory _$RemovePairCopyWith(
-          _RemovePair value, $Res Function(_RemovePair) then) =
-      __$RemovePairCopyWithImpl<$Res>;
+abstract class _$GenerateEventRemovePairCopyWith<$Res> {
+  factory _$GenerateEventRemovePairCopyWith(_GenerateEventRemovePair value,
+          $Res Function(_GenerateEventRemovePair) then) =
+      __$GenerateEventRemovePairCopyWithImpl<$Res>;
   $Res call({Pair pair, Day day});
 
   $PairCopyWith<$Res> get pair;
@@ -1681,21 +1698,23 @@ abstract class _$RemovePairCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$RemovePairCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
-    implements _$RemovePairCopyWith<$Res> {
-  __$RemovePairCopyWithImpl(
-      _RemovePair _value, $Res Function(_RemovePair) _then)
-      : super(_value, (v) => _then(v as _RemovePair));
+class __$GenerateEventRemovePairCopyWithImpl<$Res>
+    extends _$GenerateEventCopyWithImpl<$Res>
+    implements _$GenerateEventRemovePairCopyWith<$Res> {
+  __$GenerateEventRemovePairCopyWithImpl(_GenerateEventRemovePair _value,
+      $Res Function(_GenerateEventRemovePair) _then)
+      : super(_value, (v) => _then(v as _GenerateEventRemovePair));
 
   @override
-  _RemovePair get _value => super._value as _RemovePair;
+  _GenerateEventRemovePair get _value =>
+      super._value as _GenerateEventRemovePair;
 
   @override
   $Res call({
     Object? pair = freezed,
     Object? day = freezed,
   }) {
-    return _then(_RemovePair(
+    return _then(_GenerateEventRemovePair(
       pair == freezed
           ? _value.pair
           : pair // ignore: cast_nullable_to_non_nullable
@@ -1724,8 +1743,8 @@ class __$RemovePairCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RemovePair extends _RemovePair {
-  const _$_RemovePair(this.pair, this.day) : super._();
+class _$_GenerateEventRemovePair extends _GenerateEventRemovePair {
+  const _$_GenerateEventRemovePair(this.pair, this.day) : super._();
 
   @override
   final Pair pair;
@@ -1741,7 +1760,7 @@ class _$_RemovePair extends _RemovePair {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RemovePair &&
+            other is _GenerateEventRemovePair &&
             const DeepCollectionEquality().equals(other.pair, pair) &&
             const DeepCollectionEquality().equals(other.day, day));
   }
@@ -1754,8 +1773,9 @@ class _$_RemovePair extends _RemovePair {
 
   @JsonKey(ignore: true)
   @override
-  _$RemovePairCopyWith<_RemovePair> get copyWith =>
-      __$RemovePairCopyWithImpl<_RemovePair>(this, _$identity);
+  _$GenerateEventRemovePairCopyWith<_GenerateEventRemovePair> get copyWith =>
+      __$GenerateEventRemovePairCopyWithImpl<_GenerateEventRemovePair>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1810,13 +1830,14 @@ class _$_RemovePair extends _RemovePair {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddDay value) addDay,
-    required TResult Function(_RemoveDay value) removeDay,
-    required TResult Function(_AddPair value) addPair,
-    required TResult Function(_RemovePair value) removePair,
-    required TResult Function(_ChangePair value) changePair,
-    required TResult Function(_ChangeDay value) changeDay,
-    required TResult Function(_UploadSchedule value) uploadSchedule,
+    required TResult Function(_GenerateEventAddDay value) addDay,
+    required TResult Function(_GenerateEventRemoveDay value) removeDay,
+    required TResult Function(_GenerateEventAddPair value) addPair,
+    required TResult Function(_GenerateEventRemovePair value) removePair,
+    required TResult Function(_GenerateEventChangePair value) changePair,
+    required TResult Function(_GenerateEventChangeDay value) changeDay,
+    required TResult Function(_GenerateEventUploadSchedule value)
+        uploadSchedule,
   }) {
     return removePair(this);
   }
@@ -1824,13 +1845,13 @@ class _$_RemovePair extends _RemovePair {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
   }) {
     return removePair?.call(this);
   }
@@ -1838,13 +1859,13 @@ class _$_RemovePair extends _RemovePair {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
     required TResult orElse(),
   }) {
     if (removePair != null) {
@@ -1854,22 +1875,23 @@ class _$_RemovePair extends _RemovePair {
   }
 }
 
-abstract class _RemovePair extends GenerateEvent {
-  const factory _RemovePair(Pair pair, Day day) = _$_RemovePair;
-  const _RemovePair._() : super._();
+abstract class _GenerateEventRemovePair extends GenerateEvent {
+  const factory _GenerateEventRemovePair(Pair pair, Day day) =
+      _$_GenerateEventRemovePair;
+  const _GenerateEventRemovePair._() : super._();
 
   Pair get pair;
   Day get day;
   @JsonKey(ignore: true)
-  _$RemovePairCopyWith<_RemovePair> get copyWith =>
+  _$GenerateEventRemovePairCopyWith<_GenerateEventRemovePair> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ChangePairCopyWith<$Res> {
-  factory _$ChangePairCopyWith(
-          _ChangePair value, $Res Function(_ChangePair) then) =
-      __$ChangePairCopyWithImpl<$Res>;
+abstract class _$GenerateEventChangePairCopyWith<$Res> {
+  factory _$GenerateEventChangePairCopyWith(_GenerateEventChangePair value,
+          $Res Function(_GenerateEventChangePair) then) =
+      __$GenerateEventChangePairCopyWithImpl<$Res>;
   $Res call({Pair oldPair, Pair newPair, Day day});
 
   $PairCopyWith<$Res> get oldPair;
@@ -1878,14 +1900,16 @@ abstract class _$ChangePairCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ChangePairCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
-    implements _$ChangePairCopyWith<$Res> {
-  __$ChangePairCopyWithImpl(
-      _ChangePair _value, $Res Function(_ChangePair) _then)
-      : super(_value, (v) => _then(v as _ChangePair));
+class __$GenerateEventChangePairCopyWithImpl<$Res>
+    extends _$GenerateEventCopyWithImpl<$Res>
+    implements _$GenerateEventChangePairCopyWith<$Res> {
+  __$GenerateEventChangePairCopyWithImpl(_GenerateEventChangePair _value,
+      $Res Function(_GenerateEventChangePair) _then)
+      : super(_value, (v) => _then(v as _GenerateEventChangePair));
 
   @override
-  _ChangePair get _value => super._value as _ChangePair;
+  _GenerateEventChangePair get _value =>
+      super._value as _GenerateEventChangePair;
 
   @override
   $Res call({
@@ -1893,7 +1917,7 @@ class __$ChangePairCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
     Object? newPair = freezed,
     Object? day = freezed,
   }) {
-    return _then(_ChangePair(
+    return _then(_GenerateEventChangePair(
       oldPair: oldPair == freezed
           ? _value.oldPair
           : oldPair // ignore: cast_nullable_to_non_nullable
@@ -1933,8 +1957,8 @@ class __$ChangePairCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangePair extends _ChangePair {
-  const _$_ChangePair(
+class _$_GenerateEventChangePair extends _GenerateEventChangePair {
+  const _$_GenerateEventChangePair(
       {required this.oldPair, required this.newPair, required this.day})
       : super._();
 
@@ -1954,7 +1978,7 @@ class _$_ChangePair extends _ChangePair {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ChangePair &&
+            other is _GenerateEventChangePair &&
             const DeepCollectionEquality().equals(other.oldPair, oldPair) &&
             const DeepCollectionEquality().equals(other.newPair, newPair) &&
             const DeepCollectionEquality().equals(other.day, day));
@@ -1969,8 +1993,9 @@ class _$_ChangePair extends _ChangePair {
 
   @JsonKey(ignore: true)
   @override
-  _$ChangePairCopyWith<_ChangePair> get copyWith =>
-      __$ChangePairCopyWithImpl<_ChangePair>(this, _$identity);
+  _$GenerateEventChangePairCopyWith<_GenerateEventChangePair> get copyWith =>
+      __$GenerateEventChangePairCopyWithImpl<_GenerateEventChangePair>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2025,13 +2050,14 @@ class _$_ChangePair extends _ChangePair {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddDay value) addDay,
-    required TResult Function(_RemoveDay value) removeDay,
-    required TResult Function(_AddPair value) addPair,
-    required TResult Function(_RemovePair value) removePair,
-    required TResult Function(_ChangePair value) changePair,
-    required TResult Function(_ChangeDay value) changeDay,
-    required TResult Function(_UploadSchedule value) uploadSchedule,
+    required TResult Function(_GenerateEventAddDay value) addDay,
+    required TResult Function(_GenerateEventRemoveDay value) removeDay,
+    required TResult Function(_GenerateEventAddPair value) addPair,
+    required TResult Function(_GenerateEventRemovePair value) removePair,
+    required TResult Function(_GenerateEventChangePair value) changePair,
+    required TResult Function(_GenerateEventChangeDay value) changeDay,
+    required TResult Function(_GenerateEventUploadSchedule value)
+        uploadSchedule,
   }) {
     return changePair(this);
   }
@@ -2039,13 +2065,13 @@ class _$_ChangePair extends _ChangePair {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
   }) {
     return changePair?.call(this);
   }
@@ -2053,13 +2079,13 @@ class _$_ChangePair extends _ChangePair {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
     required TResult orElse(),
   }) {
     if (changePair != null) {
@@ -2069,26 +2095,26 @@ class _$_ChangePair extends _ChangePair {
   }
 }
 
-abstract class _ChangePair extends GenerateEvent {
-  const factory _ChangePair(
+abstract class _GenerateEventChangePair extends GenerateEvent {
+  const factory _GenerateEventChangePair(
       {required Pair oldPair,
       required Pair newPair,
-      required Day day}) = _$_ChangePair;
-  const _ChangePair._() : super._();
+      required Day day}) = _$_GenerateEventChangePair;
+  const _GenerateEventChangePair._() : super._();
 
   Pair get oldPair;
   Pair get newPair;
   Day get day;
   @JsonKey(ignore: true)
-  _$ChangePairCopyWith<_ChangePair> get copyWith =>
+  _$GenerateEventChangePairCopyWith<_GenerateEventChangePair> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ChangeDayCopyWith<$Res> {
-  factory _$ChangeDayCopyWith(
-          _ChangeDay value, $Res Function(_ChangeDay) then) =
-      __$ChangeDayCopyWithImpl<$Res>;
+abstract class _$GenerateEventChangeDayCopyWith<$Res> {
+  factory _$GenerateEventChangeDayCopyWith(_GenerateEventChangeDay value,
+          $Res Function(_GenerateEventChangeDay) then) =
+      __$GenerateEventChangeDayCopyWithImpl<$Res>;
   $Res call({Day oldDay, Day newDay});
 
   $DayCopyWith<$Res> get oldDay;
@@ -2096,20 +2122,22 @@ abstract class _$ChangeDayCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ChangeDayCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
-    implements _$ChangeDayCopyWith<$Res> {
-  __$ChangeDayCopyWithImpl(_ChangeDay _value, $Res Function(_ChangeDay) _then)
-      : super(_value, (v) => _then(v as _ChangeDay));
+class __$GenerateEventChangeDayCopyWithImpl<$Res>
+    extends _$GenerateEventCopyWithImpl<$Res>
+    implements _$GenerateEventChangeDayCopyWith<$Res> {
+  __$GenerateEventChangeDayCopyWithImpl(_GenerateEventChangeDay _value,
+      $Res Function(_GenerateEventChangeDay) _then)
+      : super(_value, (v) => _then(v as _GenerateEventChangeDay));
 
   @override
-  _ChangeDay get _value => super._value as _ChangeDay;
+  _GenerateEventChangeDay get _value => super._value as _GenerateEventChangeDay;
 
   @override
   $Res call({
     Object? oldDay = freezed,
     Object? newDay = freezed,
   }) {
-    return _then(_ChangeDay(
+    return _then(_GenerateEventChangeDay(
       oldDay: oldDay == freezed
           ? _value.oldDay
           : oldDay // ignore: cast_nullable_to_non_nullable
@@ -2138,8 +2166,9 @@ class __$ChangeDayCopyWithImpl<$Res> extends _$GenerateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangeDay extends _ChangeDay {
-  const _$_ChangeDay({required this.oldDay, required this.newDay}) : super._();
+class _$_GenerateEventChangeDay extends _GenerateEventChangeDay {
+  const _$_GenerateEventChangeDay({required this.oldDay, required this.newDay})
+      : super._();
 
   @override
   final Day oldDay;
@@ -2155,7 +2184,7 @@ class _$_ChangeDay extends _ChangeDay {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ChangeDay &&
+            other is _GenerateEventChangeDay &&
             const DeepCollectionEquality().equals(other.oldDay, oldDay) &&
             const DeepCollectionEquality().equals(other.newDay, newDay));
   }
@@ -2168,8 +2197,9 @@ class _$_ChangeDay extends _ChangeDay {
 
   @JsonKey(ignore: true)
   @override
-  _$ChangeDayCopyWith<_ChangeDay> get copyWith =>
-      __$ChangeDayCopyWithImpl<_ChangeDay>(this, _$identity);
+  _$GenerateEventChangeDayCopyWith<_GenerateEventChangeDay> get copyWith =>
+      __$GenerateEventChangeDayCopyWithImpl<_GenerateEventChangeDay>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2224,13 +2254,14 @@ class _$_ChangeDay extends _ChangeDay {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddDay value) addDay,
-    required TResult Function(_RemoveDay value) removeDay,
-    required TResult Function(_AddPair value) addPair,
-    required TResult Function(_RemovePair value) removePair,
-    required TResult Function(_ChangePair value) changePair,
-    required TResult Function(_ChangeDay value) changeDay,
-    required TResult Function(_UploadSchedule value) uploadSchedule,
+    required TResult Function(_GenerateEventAddDay value) addDay,
+    required TResult Function(_GenerateEventRemoveDay value) removeDay,
+    required TResult Function(_GenerateEventAddPair value) addPair,
+    required TResult Function(_GenerateEventRemovePair value) removePair,
+    required TResult Function(_GenerateEventChangePair value) changePair,
+    required TResult Function(_GenerateEventChangeDay value) changeDay,
+    required TResult Function(_GenerateEventUploadSchedule value)
+        uploadSchedule,
   }) {
     return changeDay(this);
   }
@@ -2238,13 +2269,13 @@ class _$_ChangeDay extends _ChangeDay {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
   }) {
     return changeDay?.call(this);
   }
@@ -2252,13 +2283,13 @@ class _$_ChangeDay extends _ChangeDay {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
     required TResult orElse(),
   }) {
     if (changeDay != null) {
@@ -2268,44 +2299,47 @@ class _$_ChangeDay extends _ChangeDay {
   }
 }
 
-abstract class _ChangeDay extends GenerateEvent {
-  const factory _ChangeDay({required Day oldDay, required Day newDay}) =
-      _$_ChangeDay;
-  const _ChangeDay._() : super._();
+abstract class _GenerateEventChangeDay extends GenerateEvent {
+  const factory _GenerateEventChangeDay(
+      {required Day oldDay, required Day newDay}) = _$_GenerateEventChangeDay;
+  const _GenerateEventChangeDay._() : super._();
 
   Day get oldDay;
   Day get newDay;
   @JsonKey(ignore: true)
-  _$ChangeDayCopyWith<_ChangeDay> get copyWith =>
+  _$GenerateEventChangeDayCopyWith<_GenerateEventChangeDay> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$UploadScheduleCopyWith<$Res> {
-  factory _$UploadScheduleCopyWith(
-          _UploadSchedule value, $Res Function(_UploadSchedule) then) =
-      __$UploadScheduleCopyWithImpl<$Res>;
+abstract class _$GenerateEventUploadScheduleCopyWith<$Res> {
+  factory _$GenerateEventUploadScheduleCopyWith(
+          _GenerateEventUploadSchedule value,
+          $Res Function(_GenerateEventUploadSchedule) then) =
+      __$GenerateEventUploadScheduleCopyWithImpl<$Res>;
   $Res call({Schedule schedule});
 
   $ScheduleCopyWith<$Res> get schedule;
 }
 
 /// @nodoc
-class __$UploadScheduleCopyWithImpl<$Res>
+class __$GenerateEventUploadScheduleCopyWithImpl<$Res>
     extends _$GenerateEventCopyWithImpl<$Res>
-    implements _$UploadScheduleCopyWith<$Res> {
-  __$UploadScheduleCopyWithImpl(
-      _UploadSchedule _value, $Res Function(_UploadSchedule) _then)
-      : super(_value, (v) => _then(v as _UploadSchedule));
+    implements _$GenerateEventUploadScheduleCopyWith<$Res> {
+  __$GenerateEventUploadScheduleCopyWithImpl(
+      _GenerateEventUploadSchedule _value,
+      $Res Function(_GenerateEventUploadSchedule) _then)
+      : super(_value, (v) => _then(v as _GenerateEventUploadSchedule));
 
   @override
-  _UploadSchedule get _value => super._value as _UploadSchedule;
+  _GenerateEventUploadSchedule get _value =>
+      super._value as _GenerateEventUploadSchedule;
 
   @override
   $Res call({
     Object? schedule = freezed,
   }) {
-    return _then(_UploadSchedule(
+    return _then(_GenerateEventUploadSchedule(
       schedule == freezed
           ? _value.schedule
           : schedule // ignore: cast_nullable_to_non_nullable
@@ -2323,8 +2357,8 @@ class __$UploadScheduleCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UploadSchedule extends _UploadSchedule {
-  const _$_UploadSchedule(this.schedule) : super._();
+class _$_GenerateEventUploadSchedule extends _GenerateEventUploadSchedule {
+  const _$_GenerateEventUploadSchedule(this.schedule) : super._();
 
   @override
   final Schedule schedule;
@@ -2338,7 +2372,7 @@ class _$_UploadSchedule extends _UploadSchedule {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UploadSchedule &&
+            other is _GenerateEventUploadSchedule &&
             const DeepCollectionEquality().equals(other.schedule, schedule));
   }
 
@@ -2348,8 +2382,9 @@ class _$_UploadSchedule extends _UploadSchedule {
 
   @JsonKey(ignore: true)
   @override
-  _$UploadScheduleCopyWith<_UploadSchedule> get copyWith =>
-      __$UploadScheduleCopyWithImpl<_UploadSchedule>(this, _$identity);
+  _$GenerateEventUploadScheduleCopyWith<_GenerateEventUploadSchedule>
+      get copyWith => __$GenerateEventUploadScheduleCopyWithImpl<
+          _GenerateEventUploadSchedule>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2404,13 +2439,14 @@ class _$_UploadSchedule extends _UploadSchedule {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddDay value) addDay,
-    required TResult Function(_RemoveDay value) removeDay,
-    required TResult Function(_AddPair value) addPair,
-    required TResult Function(_RemovePair value) removePair,
-    required TResult Function(_ChangePair value) changePair,
-    required TResult Function(_ChangeDay value) changeDay,
-    required TResult Function(_UploadSchedule value) uploadSchedule,
+    required TResult Function(_GenerateEventAddDay value) addDay,
+    required TResult Function(_GenerateEventRemoveDay value) removeDay,
+    required TResult Function(_GenerateEventAddPair value) addPair,
+    required TResult Function(_GenerateEventRemovePair value) removePair,
+    required TResult Function(_GenerateEventChangePair value) changePair,
+    required TResult Function(_GenerateEventChangeDay value) changeDay,
+    required TResult Function(_GenerateEventUploadSchedule value)
+        uploadSchedule,
   }) {
     return uploadSchedule(this);
   }
@@ -2418,13 +2454,13 @@ class _$_UploadSchedule extends _UploadSchedule {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
   }) {
     return uploadSchedule?.call(this);
   }
@@ -2432,13 +2468,13 @@ class _$_UploadSchedule extends _UploadSchedule {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddDay value)? addDay,
-    TResult Function(_RemoveDay value)? removeDay,
-    TResult Function(_AddPair value)? addPair,
-    TResult Function(_RemovePair value)? removePair,
-    TResult Function(_ChangePair value)? changePair,
-    TResult Function(_ChangeDay value)? changeDay,
-    TResult Function(_UploadSchedule value)? uploadSchedule,
+    TResult Function(_GenerateEventAddDay value)? addDay,
+    TResult Function(_GenerateEventRemoveDay value)? removeDay,
+    TResult Function(_GenerateEventAddPair value)? addPair,
+    TResult Function(_GenerateEventRemovePair value)? removePair,
+    TResult Function(_GenerateEventChangePair value)? changePair,
+    TResult Function(_GenerateEventChangeDay value)? changeDay,
+    TResult Function(_GenerateEventUploadSchedule value)? uploadSchedule,
     required TResult orElse(),
   }) {
     if (uploadSchedule != null) {
@@ -2448,12 +2484,13 @@ class _$_UploadSchedule extends _UploadSchedule {
   }
 }
 
-abstract class _UploadSchedule extends GenerateEvent {
-  const factory _UploadSchedule(Schedule schedule) = _$_UploadSchedule;
-  const _UploadSchedule._() : super._();
+abstract class _GenerateEventUploadSchedule extends GenerateEvent {
+  const factory _GenerateEventUploadSchedule(Schedule schedule) =
+      _$_GenerateEventUploadSchedule;
+  const _GenerateEventUploadSchedule._() : super._();
 
   Schedule get schedule;
   @JsonKey(ignore: true)
-  _$UploadScheduleCopyWith<_UploadSchedule> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$GenerateEventUploadScheduleCopyWith<_GenerateEventUploadSchedule>
+      get copyWith => throw _privateConstructorUsedError;
 }

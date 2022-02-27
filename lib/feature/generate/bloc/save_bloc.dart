@@ -1,8 +1,7 @@
-
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/common/util/file_saver/file_saver.dart';
-import 'package:stream_bloc/stream_bloc.dart';
 
 part 'save_bloc.freezed.dart';
 
@@ -27,21 +26,19 @@ class SaveEvent with _$SaveEvent {
   }) = _SaveEvent;
 }
 
-class SaveBloc extends StreamBloc<SaveEvent, SaveState> {
-  SaveBloc() : super(const SaveState._());
+class SaveBloc extends Bloc<SaveEvent, SaveState> {
+  SaveBloc() : super(const SaveState._()) {
+    on<SaveEvent>(
+      (event, emitter) => event.map(
+        save: (e) => _save(e, emitter),
+      ),
+    );
+  }
 
-  @override
-  Stream<SaveState> mapEventToStates(SaveEvent event) => event.map(
-        save: (s) => _save(filename: s.filename, content: s.content),
-      );
-
-  Stream<SaveState> _save({
-    required String filename,
-    required String content,
-  }) async* {
+  Future<void> _save(SaveEvent event, Emitter emitter) async {
     await FileSaver.save(
-      filename: filename,
-      content: content,
+      filename: event.filename,
+      content: event.content,
     );
   }
 }

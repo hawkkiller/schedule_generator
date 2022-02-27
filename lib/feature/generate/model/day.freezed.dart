@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Day _$DayFromJson(Map<String, dynamic> json) {
+  return _Day.fromJson(json);
+}
+
 /// @nodoc
 class _$DayTearOff {
   const _$DayTearOff();
@@ -21,12 +25,16 @@ class _$DayTearOff {
   _Day call(
       {required String caption,
       List<Pair> pairs = const <Pair>[],
-      String? hash}) {
+      @JsonKey(ignore: true) String? hash}) {
     return _Day(
       caption: caption,
       pairs: pairs,
       hash: hash,
     );
+  }
+
+  Day fromJson(Map<String, Object?> json) {
+    return Day.fromJson(json);
   }
 }
 
@@ -37,8 +45,10 @@ const $Day = _$DayTearOff();
 mixin _$Day {
   String get caption => throw _privateConstructorUsedError;
   List<Pair> get pairs => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   String? get hash => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DayCopyWith<Day> get copyWith => throw _privateConstructorUsedError;
 }
@@ -47,7 +57,8 @@ mixin _$Day {
 abstract class $DayCopyWith<$Res> {
   factory $DayCopyWith(Day value, $Res Function(Day) then) =
       _$DayCopyWithImpl<$Res>;
-  $Res call({String caption, List<Pair> pairs, String? hash});
+  $Res call(
+      {String caption, List<Pair> pairs, @JsonKey(ignore: true) String? hash});
 }
 
 /// @nodoc
@@ -86,7 +97,8 @@ abstract class _$DayCopyWith<$Res> implements $DayCopyWith<$Res> {
   factory _$DayCopyWith(_Day value, $Res Function(_Day) then) =
       __$DayCopyWithImpl<$Res>;
   @override
-  $Res call({String caption, List<Pair> pairs, String? hash});
+  $Res call(
+      {String caption, List<Pair> pairs, @JsonKey(ignore: true) String? hash});
 }
 
 /// @nodoc
@@ -122,9 +134,14 @@ class __$DayCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Day implements _Day {
-  _$_Day({required this.caption, this.pairs = const <Pair>[], this.hash});
+  const _$_Day(
+      {required this.caption,
+      this.pairs = const <Pair>[],
+      @JsonKey(ignore: true) this.hash});
+
+  factory _$_Day.fromJson(Map<String, dynamic> json) => _$$_DayFromJson(json);
 
   @override
   final String caption;
@@ -132,6 +149,7 @@ class _$_Day implements _Day {
   @override
   final List<Pair> pairs;
   @override
+  @JsonKey(ignore: true)
   final String? hash;
 
   @override
@@ -160,17 +178,27 @@ class _$_Day implements _Day {
   @override
   _$DayCopyWith<_Day> get copyWith =>
       __$DayCopyWithImpl<_Day>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DayToJson(this);
+  }
 }
 
 abstract class _Day implements Day {
-  factory _Day({required String caption, List<Pair> pairs, String? hash}) =
-      _$_Day;
+  const factory _Day(
+      {required String caption,
+      List<Pair> pairs,
+      @JsonKey(ignore: true) String? hash}) = _$_Day;
+
+  factory _Day.fromJson(Map<String, dynamic> json) = _$_Day.fromJson;
 
   @override
   String get caption;
   @override
   List<Pair> get pairs;
   @override
+  @JsonKey(ignore: true)
   String? get hash;
   @override
   @JsonKey(ignore: true)

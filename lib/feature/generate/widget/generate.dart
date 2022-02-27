@@ -12,7 +12,7 @@ class Generate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DefaultTextStyle(
-        style: const TextStyle(fontFamily: 'Roboto'),
+        style: const TextStyle(fontFamily: 'SFProRounded'),
         child: BlocProvider(
           create: (context) => SaveBloc(),
           child: BlocProvider(
@@ -41,7 +41,7 @@ class Generate extends StatelessWidget {
                       },
                     ),
                     appBar: AppBar(
-                      title: const Text('Сгененировать файл расписания'),
+                      title: const Text('Создание'),
                       leading: IconButton(
                         onPressed: () async {
                           BlocProvider.of<UploadBloc>(context).add(

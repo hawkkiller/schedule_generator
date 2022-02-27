@@ -1,17 +1,16 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'dart:developer';
-
-import 'package:stream_bloc/stream_bloc.dart';
 
 class CustomBlocObserver extends BlocObserver {
   @override
   void onEvent(Bloc bloc, Object? event) {
-    log('Bloc: $bloc, event: $event');
+    debugPrint('[OnEVENT] Bloc: $bloc, event: $event');
     super.onEvent(bloc, event);
   }
   @override
   void onCreate(BlocBase bloc) {
-    log('Bloc: $bloc');
+    debugPrint('[OnCREATE] Bloc: $bloc, event: $bloc');
     super.onCreate(bloc);
   }
 }

@@ -14,14 +14,22 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
+  return _Schedule.fromJson(json);
+}
+
 /// @nodoc
 class _$ScheduleTearOff {
   const _$ScheduleTearOff();
 
-  _Schedule call({List<Day> days = const <Day>[]}) {
+  _Schedule call({@DayConverter() List<Day> days = const <Day>[]}) {
     return _Schedule(
       days: days,
     );
+  }
+
+  Schedule fromJson(Map<String, Object?> json) {
+    return Schedule.fromJson(json);
   }
 }
 
@@ -30,8 +38,10 @@ const $Schedule = _$ScheduleTearOff();
 
 /// @nodoc
 mixin _$Schedule {
+  @DayConverter()
   List<Day> get days => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ScheduleCopyWith<Schedule> get copyWith =>
       throw _privateConstructorUsedError;
@@ -41,7 +51,7 @@ mixin _$Schedule {
 abstract class $ScheduleCopyWith<$Res> {
   factory $ScheduleCopyWith(Schedule value, $Res Function(Schedule) then) =
       _$ScheduleCopyWithImpl<$Res>;
-  $Res call({List<Day> days});
+  $Res call({@DayConverter() List<Day> days});
 }
 
 /// @nodoc
@@ -70,7 +80,7 @@ abstract class _$ScheduleCopyWith<$Res> implements $ScheduleCopyWith<$Res> {
   factory _$ScheduleCopyWith(_Schedule value, $Res Function(_Schedule) then) =
       __$ScheduleCopyWithImpl<$Res>;
   @override
-  $Res call({List<Day> days});
+  $Res call({@DayConverter() List<Day> days});
 }
 
 /// @nodoc
@@ -96,12 +106,16 @@ class __$ScheduleCopyWithImpl<$Res> extends _$ScheduleCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Schedule implements _Schedule {
-  const _$_Schedule({this.days = const <Day>[]});
+  const _$_Schedule({@DayConverter() this.days = const <Day>[]});
+
+  factory _$_Schedule.fromJson(Map<String, dynamic> json) =>
+      _$$_ScheduleFromJson(json);
 
   @JsonKey()
   @override
+  @DayConverter()
   final List<Day> days;
 
   @override
@@ -125,12 +139,20 @@ class _$_Schedule implements _Schedule {
   @override
   _$ScheduleCopyWith<_Schedule> get copyWith =>
       __$ScheduleCopyWithImpl<_Schedule>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ScheduleToJson(this);
+  }
 }
 
 abstract class _Schedule implements Schedule {
-  const factory _Schedule({List<Day> days}) = _$_Schedule;
+  const factory _Schedule({@DayConverter() List<Day> days}) = _$_Schedule;
+
+  factory _Schedule.fromJson(Map<String, dynamic> json) = _$_Schedule.fromJson;
 
   @override
+  @DayConverter()
   List<Day> get days;
   @override
   @JsonKey(ignore: true)

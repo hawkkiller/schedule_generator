@@ -3,9 +3,9 @@ import 'dart:io' if (dart.io) 'dart:html';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/feature/generate/model/schedule.dart';
-import 'package:stream_bloc/stream_bloc.dart';
 
 part 'upload_bloc.freezed.dart';
 
@@ -25,16 +25,17 @@ class UploadEvent with _$UploadEvent {
   const factory UploadEvent.upload() = _UploadEvent;
 }
 
-class UploadBloc extends StreamBloc<UploadEvent, UploadState> {
-  UploadBloc() : super(const _UploadInitial());
+class UploadBloc extends Bloc<UploadEvent, UploadState> {
+  UploadBloc() : super(const _UploadInitial()) {
+    on<UploadEvent>(
+      (event, emitter) => event.map(
+        upload: (e) => _upload(e, emitter),
+      ),
+    );
+  }
 
-  @override
-  Stream<UploadState> mapEventToStates(UploadEvent event) => event.map(
-        upload: (u) => _upload(),
-      );
-
-  Stream<UploadState> _upload() async* {
-    yield const _Uploading();
+  Future<void> _upload(UploadEvent event, Emitter emitter) async {
+    emitter.call(const _Uploading());
     final files = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['json'],
@@ -47,10 +48,9 @@ class UploadBloc extends StreamBloc<UploadEvent, UploadState> {
         final json = utf8.decode(bytes);
         final schedule =
             Schedule.fromJson(jsonDecode(json) as Map<String, dynamic>);
-        debugPrint(schedule.toString());
-        yield UploadedState(schedule);
+        emitter.call(UploadedState(schedule));
       } else {
-        yield const UploadErrorState();
+        emitter.call(const UploadErrorState());
       }
     } else {
       final fileIO = File(file.path!);
@@ -58,7 +58,7 @@ class UploadBloc extends StreamBloc<UploadEvent, UploadState> {
       final json = utf8.decode(bytes);
       final schedule =
           Schedule.fromJson(jsonDecode(json) as Map<String, dynamic>);
-      yield UploadedState(schedule);
+      emitter.call(UploadedState(schedule));
     }
   }
 }

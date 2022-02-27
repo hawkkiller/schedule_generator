@@ -539,13 +539,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
-  stream_bloc:
-    dependency: "direct main"
-    description:
-      name: stream_bloc
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0"
   stream_channel:
     dependency: transitive
     description:
