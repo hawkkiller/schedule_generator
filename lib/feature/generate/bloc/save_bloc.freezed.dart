@@ -12,27 +12,7 @@ part of 'save_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SaveStateTearOff {
-  const _$SaveStateTearOff();
-
-  SaveStateSaving saving() {
-    return const SaveStateSaving();
-  }
-
-  SaveStateSaved saved() {
-    return const SaveStateSaved();
-  }
-
-  SaveStateError error() {
-    return const SaveStateError();
-  }
-}
-
-/// @nodoc
-const $SaveState = _$SaveStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SaveState {
@@ -128,7 +108,7 @@ class _$SaveStateSaving extends SaveStateSaving with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'SaveState.saving'));
+    properties.add(DiagnosticsProperty('type', 'SaveState.saving'));
   }
 
   @override
@@ -245,7 +225,7 @@ class _$SaveStateSaved extends SaveStateSaved with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'SaveState.saved'));
+    properties.add(DiagnosticsProperty('type', 'SaveState.saved'));
   }
 
   @override
@@ -362,7 +342,7 @@ class _$SaveStateError extends SaveStateError with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'SaveState.error'));
+    properties.add(DiagnosticsProperty('type', 'SaveState.error'));
   }
 
   @override
@@ -449,25 +429,9 @@ abstract class SaveStateError extends SaveState {
 }
 
 /// @nodoc
-class _$SaveEventTearOff {
-  const _$SaveEventTearOff();
-
-  _SaveEvent save({required String filename, required String content}) {
-    return _SaveEvent(
-      filename: filename,
-      content: content,
-    );
-  }
-}
-
-/// @nodoc
-const $SaveEvent = _$SaveEventTearOff();
-
-/// @nodoc
 mixin _$SaveEvent {
   String get filename => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String filename, String content) save,
@@ -679,13 +643,14 @@ class _$_SaveEvent extends _SaveEvent with DiagnosticableTreeMixin {
 
 abstract class _SaveEvent extends SaveEvent {
   const factory _SaveEvent(
-      {required String filename, required String content}) = _$_SaveEvent;
+      {required final String filename,
+      required final String content}) = _$_SaveEvent;
   const _SaveEvent._() : super._();
 
   @override
-  String get filename;
+  String get filename => throw _privateConstructorUsedError;
   @override
-  String get content;
+  String get content => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SaveEventCopyWith<_SaveEvent> get copyWith =>

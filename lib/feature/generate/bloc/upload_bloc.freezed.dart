@@ -12,33 +12,7 @@ part of 'upload_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$UploadStateTearOff {
-  const _$UploadStateTearOff();
-
-  _UploadInitial initial() {
-    return const _UploadInitial();
-  }
-
-  _Uploading uploading() {
-    return const _Uploading();
-  }
-
-  UploadedState uploaded(Schedule schedule) {
-    return UploadedState(
-      schedule,
-    );
-  }
-
-  UploadErrorState error() {
-    return const UploadErrorState();
-  }
-}
-
-/// @nodoc
-const $UploadState = _$UploadStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$UploadState {
@@ -141,7 +115,7 @@ class _$_UploadInitial with DiagnosticableTreeMixin implements _UploadInitial {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'UploadState.initial'));
+    properties.add(DiagnosticsProperty('type', 'UploadState.initial'));
   }
 
   @override
@@ -262,7 +236,7 @@ class _$_Uploading with DiagnosticableTreeMixin implements _Uploading {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'UploadState.uploading'));
+    properties.add(DiagnosticsProperty('type', 'UploadState.uploading'));
   }
 
   @override
@@ -507,9 +481,9 @@ class _$UploadedState with DiagnosticableTreeMixin implements UploadedState {
 }
 
 abstract class UploadedState implements UploadState {
-  const factory UploadedState(Schedule schedule) = _$UploadedState;
+  const factory UploadedState(final Schedule schedule) = _$UploadedState;
 
-  Schedule get schedule;
+  Schedule get schedule => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UploadedStateCopyWith<UploadedState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -549,7 +523,7 @@ class _$UploadErrorState
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'UploadState.error'));
+    properties.add(DiagnosticsProperty('type', 'UploadState.error'));
   }
 
   @override
@@ -641,18 +615,6 @@ abstract class UploadErrorState implements UploadState {
 }
 
 /// @nodoc
-class _$UploadEventTearOff {
-  const _$UploadEventTearOff();
-
-  _UploadEvent upload() {
-    return const _UploadEvent();
-  }
-}
-
-/// @nodoc
-const $UploadEvent = _$UploadEventTearOff();
-
-/// @nodoc
 mixin _$UploadEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -735,7 +697,7 @@ class _$_UploadEvent with DiagnosticableTreeMixin implements _UploadEvent {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'UploadEvent.upload'));
+    properties.add(DiagnosticsProperty('type', 'UploadEvent.upload'));
   }
 
   @override

@@ -69,9 +69,10 @@ class Generate extends StatelessWidget {
                         ),
                       ],
                     ),
-                    body: BlocBuilder<GenerateBloc, GenerateState>(
-                      buildWhen: (previous, current) =>
-                          current is! GenerateChangedState,
+                    body: BlocConsumer<GenerateBloc, GenerateState>(
+                      listener: (context, state) {
+                        log(state.toString());
+                      },
                       builder: (context, state) => SingleChildScrollView(
                         child: Column(
                           children: [

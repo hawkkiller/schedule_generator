@@ -12,34 +12,11 @@ part of 'pair.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Pair _$PairFromJson(Map<String, dynamic> json) {
   return _Pair.fromJson(json);
 }
-
-/// @nodoc
-class _$PairTearOff {
-  const _$PairTearOff();
-
-  _Pair call(
-      {required String title,
-      required String auditory,
-      @JsonKey(name: 'additional_info') required String additional}) {
-    return _Pair(
-      title: title,
-      auditory: auditory,
-      additional: additional,
-    );
-  }
-
-  Pair fromJson(Map<String, Object?> json) {
-    return Pair.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Pair = _$PairTearOff();
 
 /// @nodoc
 mixin _$Pair {
@@ -47,6 +24,8 @@ mixin _$Pair {
   String get auditory => throw _privateConstructorUsedError;
   @JsonKey(name: 'additional_info')
   String get additional => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  String? get hash => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +39,8 @@ abstract class $PairCopyWith<$Res> {
   $Res call(
       {String title,
       String auditory,
-      @JsonKey(name: 'additional_info') String additional});
+      @JsonKey(name: 'additional_info') String additional,
+      @JsonKey(ignore: true) String? hash});
 }
 
 /// @nodoc
@@ -76,6 +56,7 @@ class _$PairCopyWithImpl<$Res> implements $PairCopyWith<$Res> {
     Object? title = freezed,
     Object? auditory = freezed,
     Object? additional = freezed,
+    Object? hash = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -90,6 +71,10 @@ class _$PairCopyWithImpl<$Res> implements $PairCopyWith<$Res> {
           ? _value.additional
           : additional // ignore: cast_nullable_to_non_nullable
               as String,
+      hash: hash == freezed
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -102,7 +87,8 @@ abstract class _$PairCopyWith<$Res> implements $PairCopyWith<$Res> {
   $Res call(
       {String title,
       String auditory,
-      @JsonKey(name: 'additional_info') String additional});
+      @JsonKey(name: 'additional_info') String additional,
+      @JsonKey(ignore: true) String? hash});
 }
 
 /// @nodoc
@@ -119,6 +105,7 @@ class __$PairCopyWithImpl<$Res> extends _$PairCopyWithImpl<$Res>
     Object? title = freezed,
     Object? auditory = freezed,
     Object? additional = freezed,
+    Object? hash = freezed,
   }) {
     return _then(_Pair(
       title: title == freezed
@@ -133,6 +120,10 @@ class __$PairCopyWithImpl<$Res> extends _$PairCopyWithImpl<$Res>
           ? _value.additional
           : additional // ignore: cast_nullable_to_non_nullable
               as String,
+      hash: hash == freezed
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -143,7 +134,8 @@ class _$_Pair implements _Pair {
   const _$_Pair(
       {required this.title,
       required this.auditory,
-      @JsonKey(name: 'additional_info') required this.additional});
+      @JsonKey(name: 'additional_info') required this.additional,
+      @JsonKey(ignore: true) this.hash});
 
   factory _$_Pair.fromJson(Map<String, dynamic> json) => _$$_PairFromJson(json);
 
@@ -154,10 +146,13 @@ class _$_Pair implements _Pair {
   @override
   @JsonKey(name: 'additional_info')
   final String additional;
+  @override
+  @JsonKey(ignore: true)
+  final String? hash;
 
   @override
   String toString() {
-    return 'Pair(title: $title, auditory: $auditory, additional: $additional)';
+    return 'Pair(title: $title, auditory: $auditory, additional: $additional, hash: $hash)';
   }
 
   @override
@@ -168,15 +163,18 @@ class _$_Pair implements _Pair {
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.auditory, auditory) &&
             const DeepCollectionEquality()
-                .equals(other.additional, additional));
+                .equals(other.additional, additional) &&
+            const DeepCollectionEquality().equals(other.hash, hash));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(auditory),
-      const DeepCollectionEquality().hash(additional));
+      const DeepCollectionEquality().hash(additional),
+      const DeepCollectionEquality().hash(hash));
 
   @JsonKey(ignore: true)
   @override
@@ -191,19 +189,23 @@ class _$_Pair implements _Pair {
 
 abstract class _Pair implements Pair {
   const factory _Pair(
-      {required String title,
-      required String auditory,
-      @JsonKey(name: 'additional_info') required String additional}) = _$_Pair;
+      {required final String title,
+      required final String auditory,
+      @JsonKey(name: 'additional_info') required final String additional,
+      @JsonKey(ignore: true) final String? hash}) = _$_Pair;
 
   factory _Pair.fromJson(Map<String, dynamic> json) = _$_Pair.fromJson;
 
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get auditory;
+  String get auditory => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'additional_info')
-  String get additional;
+  String get additional => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  String? get hash => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PairCopyWith<_Pair> get copyWith => throw _privateConstructorUsedError;

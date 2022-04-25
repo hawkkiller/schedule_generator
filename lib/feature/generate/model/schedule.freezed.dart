@@ -12,29 +12,11 @@ part of 'schedule.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
   return _Schedule.fromJson(json);
 }
-
-/// @nodoc
-class _$ScheduleTearOff {
-  const _$ScheduleTearOff();
-
-  _Schedule call({@DayConverter() List<Day> days = const <Day>[]}) {
-    return _Schedule(
-      days: days,
-    );
-  }
-
-  Schedule fromJson(Map<String, Object?> json) {
-    return Schedule.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Schedule = _$ScheduleTearOff();
 
 /// @nodoc
 mixin _$Schedule {
@@ -113,8 +95,8 @@ class _$_Schedule implements _Schedule {
   factory _$_Schedule.fromJson(Map<String, dynamic> json) =>
       _$$_ScheduleFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   @DayConverter()
   final List<Day> days;
 
@@ -131,6 +113,7 @@ class _$_Schedule implements _Schedule {
             const DeepCollectionEquality().equals(other.days, days));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(days));
@@ -147,13 +130,13 @@ class _$_Schedule implements _Schedule {
 }
 
 abstract class _Schedule implements Schedule {
-  const factory _Schedule({@DayConverter() List<Day> days}) = _$_Schedule;
+  const factory _Schedule({@DayConverter() final List<Day> days}) = _$_Schedule;
 
   factory _Schedule.fromJson(Map<String, dynamic> json) = _$_Schedule.fromJson;
 
   @override
   @DayConverter()
-  List<Day> get days;
+  List<Day> get days => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ScheduleCopyWith<_Schedule> get copyWith =>

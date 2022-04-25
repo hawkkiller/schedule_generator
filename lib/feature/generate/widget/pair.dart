@@ -1,18 +1,21 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schedule/feature/generate/bloc/generate_bloc.dart';
+import 'package:schedule/feature/generate/model/day.dart';
 import 'package:schedule/feature/generate/model/pair.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PairWidget extends StatefulWidget {
   const PairWidget({
     required this.pair,
+    required this.day,
     required this.divider,
     required this.onChange,
     Key? key,
   }) : super(key: key);
 
   final Pair pair;
+  final Day day;
   final bool divider;
   final void Function(Pair) onChange;
 
@@ -63,72 +66,76 @@ class _PairWidgetState extends State<PairWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: Text('Название'),
-              ),
-              Flexible(
-                child: TextField(
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          children: [
+            TextButton(
+              child: const Text('Удалить'),
+              onPressed: () => context.read<GenerateBloc>().add(
+                    GenerateEvent.removePair(pair, widget.day),
                   ),
-                  maxLines: 5,
-                  minLines: 1,
-                  controller: titleController,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: Text('Аудитория'),
-              ),
-              Flexible(
-                child: TextField(
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                  ),
-                  maxLines: 5,
-                  minLines: 1,
-                  controller: auditoryController,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: Text('Код'),
-              ),
-              Flexible(
-                child: TextField(
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                  ),
-                  maxLines: 5,
-                  minLines: 1,
-                  controller: additionalController,
-                ),
-              ),
-            ],
-          ),
-          if (widget.divider)
-            const Divider(
-              height: 0,
-              color: CupertinoColors.black,
             ),
-        ],
-      ),
-    );
-  }
+            Row(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: Text('Название'),
+                ),
+                Flexible(
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                    ),
+                    maxLines: 5,
+                    minLines: 1,
+                    controller: titleController,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: Text('Аудитория'),
+                ),
+                Flexible(
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                    ),
+                    maxLines: 5,
+                    minLines: 1,
+                    controller: auditoryController,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: Text('Код'),
+                ),
+                Flexible(
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                    ),
+                    maxLines: 5,
+                    minLines: 1,
+                    controller: additionalController,
+                  ),
+                ),
+              ],
+            ),
+            if (widget.divider)
+              const Divider(
+                height: 0,
+                color: CupertinoColors.black,
+              ),
+          ],
+        ),
+      );
 }

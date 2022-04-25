@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomBlocObserver extends BlocObserver {
   @override
-  void onEvent(Bloc bloc, Object? event) {
-    debugPrint('[OnEVENT] Bloc: $bloc, event: $event');
-    super.onEvent(bloc, event);
+  void onTransition(Bloc bloc, Transition transition) {
+    debugPrint('Bloc: $bloc, event: ${transition.event.runtimeType}, state: ${transition.currentState} => ${transition.nextState}');
+    super.onTransition(bloc, transition);
   }
   @override
   void onCreate(BlocBase bloc) {

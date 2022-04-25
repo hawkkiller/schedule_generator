@@ -5,7 +5,7 @@ part 'schedule.freezed.dart';
 
 part 'schedule.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class Schedule with _$Schedule {
   const factory Schedule({
     @DayConverter() @Default(<Day>[]) List<Day> days,

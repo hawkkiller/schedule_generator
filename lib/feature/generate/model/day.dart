@@ -8,7 +8,7 @@ part 'day.freezed.dart';
 
 part 'day.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class Day with _$Day {
   const factory Day({
     required String caption,

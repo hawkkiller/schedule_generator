@@ -12,53 +12,15 @@ part of 'generate_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$GenerateStateTearOff {
-  const _$GenerateStateTearOff();
-
-  _InitialState initial(Schedule schedule) {
-    return _InitialState(
-      schedule,
-    );
-  }
-
-  _AddedState added(Schedule schedule) {
-    return _AddedState(
-      schedule,
-    );
-  }
-
-  GenerateChangedState changed(Schedule schedule) {
-    return GenerateChangedState(
-      schedule,
-    );
-  }
-
-  _UploadedState uploaded(Schedule schedule) {
-    return _UploadedState(
-      schedule,
-    );
-  }
-
-  _ErrorState error(Schedule schedule) {
-    return _ErrorState(
-      schedule,
-    );
-  }
-}
-
-/// @nodoc
-const $GenerateState = _$GenerateStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$GenerateState {
   Schedule get schedule => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Schedule schedule) initial,
+    required TResult Function(Schedule schedule) inProgress,
     required TResult Function(Schedule schedule) added,
     required TResult Function(Schedule schedule) changed,
     required TResult Function(Schedule schedule) uploaded,
@@ -68,6 +30,7 @@ mixin _$GenerateState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -77,6 +40,7 @@ mixin _$GenerateState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -87,6 +51,7 @@ mixin _$GenerateState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_InProgressState value) inProgress,
     required TResult Function(_AddedState value) added,
     required TResult Function(GenerateChangedState value) changed,
     required TResult Function(_UploadedState value) uploaded,
@@ -96,6 +61,7 @@ mixin _$GenerateState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -105,6 +71,7 @@ mixin _$GenerateState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -228,6 +195,7 @@ class _$_InitialState extends _InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Schedule schedule) initial,
+    required TResult Function(Schedule schedule) inProgress,
     required TResult Function(Schedule schedule) added,
     required TResult Function(Schedule schedule) changed,
     required TResult Function(Schedule schedule) uploaded,
@@ -240,6 +208,7 @@ class _$_InitialState extends _InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -252,6 +221,7 @@ class _$_InitialState extends _InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -268,6 +238,7 @@ class _$_InitialState extends _InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_InProgressState value) inProgress,
     required TResult Function(_AddedState value) added,
     required TResult Function(GenerateChangedState value) changed,
     required TResult Function(_UploadedState value) uploaded,
@@ -280,6 +251,7 @@ class _$_InitialState extends _InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -292,6 +264,7 @@ class _$_InitialState extends _InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -306,14 +279,180 @@ class _$_InitialState extends _InitialState {
 }
 
 abstract class _InitialState extends GenerateState {
-  const factory _InitialState(Schedule schedule) = _$_InitialState;
+  const factory _InitialState(final Schedule schedule) = _$_InitialState;
   const _InitialState._() : super._();
 
   @override
-  Schedule get schedule;
+  Schedule get schedule => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$InitialStateCopyWith<_InitialState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$InProgressStateCopyWith<$Res>
+    implements $GenerateStateCopyWith<$Res> {
+  factory _$InProgressStateCopyWith(
+          _InProgressState value, $Res Function(_InProgressState) then) =
+      __$InProgressStateCopyWithImpl<$Res>;
+  @override
+  $Res call({Schedule schedule});
+
+  @override
+  $ScheduleCopyWith<$Res> get schedule;
+}
+
+/// @nodoc
+class __$InProgressStateCopyWithImpl<$Res>
+    extends _$GenerateStateCopyWithImpl<$Res>
+    implements _$InProgressStateCopyWith<$Res> {
+  __$InProgressStateCopyWithImpl(
+      _InProgressState _value, $Res Function(_InProgressState) _then)
+      : super(_value, (v) => _then(v as _InProgressState));
+
+  @override
+  _InProgressState get _value => super._value as _InProgressState;
+
+  @override
+  $Res call({
+    Object? schedule = freezed,
+  }) {
+    return _then(_InProgressState(
+      schedule == freezed
+          ? _value.schedule
+          : schedule // ignore: cast_nullable_to_non_nullable
+              as Schedule,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_InProgressState extends _InProgressState {
+  const _$_InProgressState(this.schedule) : super._();
+
+  @override
+  final Schedule schedule;
+
+  @override
+  String toString() {
+    return 'GenerateState.inProgress(schedule: $schedule)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _InProgressState &&
+            const DeepCollectionEquality().equals(other.schedule, schedule));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(schedule));
+
+  @JsonKey(ignore: true)
+  @override
+  _$InProgressStateCopyWith<_InProgressState> get copyWith =>
+      __$InProgressStateCopyWithImpl<_InProgressState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Schedule schedule) initial,
+    required TResult Function(Schedule schedule) inProgress,
+    required TResult Function(Schedule schedule) added,
+    required TResult Function(Schedule schedule) changed,
+    required TResult Function(Schedule schedule) uploaded,
+    required TResult Function(Schedule schedule) error,
+  }) {
+    return inProgress(schedule);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
+    TResult Function(Schedule schedule)? added,
+    TResult Function(Schedule schedule)? changed,
+    TResult Function(Schedule schedule)? uploaded,
+    TResult Function(Schedule schedule)? error,
+  }) {
+    return inProgress?.call(schedule);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
+    TResult Function(Schedule schedule)? added,
+    TResult Function(Schedule schedule)? changed,
+    TResult Function(Schedule schedule)? uploaded,
+    TResult Function(Schedule schedule)? error,
+    required TResult orElse(),
+  }) {
+    if (inProgress != null) {
+      return inProgress(schedule);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_InProgressState value) inProgress,
+    required TResult Function(_AddedState value) added,
+    required TResult Function(GenerateChangedState value) changed,
+    required TResult Function(_UploadedState value) uploaded,
+    required TResult Function(_ErrorState value) error,
+  }) {
+    return inProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
+    TResult Function(_AddedState value)? added,
+    TResult Function(GenerateChangedState value)? changed,
+    TResult Function(_UploadedState value)? uploaded,
+    TResult Function(_ErrorState value)? error,
+  }) {
+    return inProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
+    TResult Function(_AddedState value)? added,
+    TResult Function(GenerateChangedState value)? changed,
+    TResult Function(_UploadedState value)? uploaded,
+    TResult Function(_ErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (inProgress != null) {
+      return inProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InProgressState extends GenerateState {
+  const factory _InProgressState(final Schedule schedule) = _$_InProgressState;
+  const _InProgressState._() : super._();
+
+  @override
+  Schedule get schedule => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$InProgressStateCopyWith<_InProgressState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -387,6 +526,7 @@ class _$_AddedState extends _AddedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Schedule schedule) initial,
+    required TResult Function(Schedule schedule) inProgress,
     required TResult Function(Schedule schedule) added,
     required TResult Function(Schedule schedule) changed,
     required TResult Function(Schedule schedule) uploaded,
@@ -399,6 +539,7 @@ class _$_AddedState extends _AddedState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -411,6 +552,7 @@ class _$_AddedState extends _AddedState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -427,6 +569,7 @@ class _$_AddedState extends _AddedState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_InProgressState value) inProgress,
     required TResult Function(_AddedState value) added,
     required TResult Function(GenerateChangedState value) changed,
     required TResult Function(_UploadedState value) uploaded,
@@ -439,6 +582,7 @@ class _$_AddedState extends _AddedState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -451,6 +595,7 @@ class _$_AddedState extends _AddedState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -465,11 +610,11 @@ class _$_AddedState extends _AddedState {
 }
 
 abstract class _AddedState extends GenerateState {
-  const factory _AddedState(Schedule schedule) = _$_AddedState;
+  const factory _AddedState(final Schedule schedule) = _$_AddedState;
   const _AddedState._() : super._();
 
   @override
-  Schedule get schedule;
+  Schedule get schedule => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AddedStateCopyWith<_AddedState> get copyWith =>
@@ -548,6 +693,7 @@ class _$GenerateChangedState extends GenerateChangedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Schedule schedule) initial,
+    required TResult Function(Schedule schedule) inProgress,
     required TResult Function(Schedule schedule) added,
     required TResult Function(Schedule schedule) changed,
     required TResult Function(Schedule schedule) uploaded,
@@ -560,6 +706,7 @@ class _$GenerateChangedState extends GenerateChangedState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -572,6 +719,7 @@ class _$GenerateChangedState extends GenerateChangedState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -588,6 +736,7 @@ class _$GenerateChangedState extends GenerateChangedState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_InProgressState value) inProgress,
     required TResult Function(_AddedState value) added,
     required TResult Function(GenerateChangedState value) changed,
     required TResult Function(_UploadedState value) uploaded,
@@ -600,6 +749,7 @@ class _$GenerateChangedState extends GenerateChangedState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -612,6 +762,7 @@ class _$GenerateChangedState extends GenerateChangedState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -626,12 +777,12 @@ class _$GenerateChangedState extends GenerateChangedState {
 }
 
 abstract class GenerateChangedState extends GenerateState {
-  const factory GenerateChangedState(Schedule schedule) =
+  const factory GenerateChangedState(final Schedule schedule) =
       _$GenerateChangedState;
   const GenerateChangedState._() : super._();
 
   @override
-  Schedule get schedule;
+  Schedule get schedule => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $GenerateChangedStateCopyWith<GenerateChangedState> get copyWith =>
@@ -709,6 +860,7 @@ class _$_UploadedState extends _UploadedState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Schedule schedule) initial,
+    required TResult Function(Schedule schedule) inProgress,
     required TResult Function(Schedule schedule) added,
     required TResult Function(Schedule schedule) changed,
     required TResult Function(Schedule schedule) uploaded,
@@ -721,6 +873,7 @@ class _$_UploadedState extends _UploadedState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -733,6 +886,7 @@ class _$_UploadedState extends _UploadedState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -749,6 +903,7 @@ class _$_UploadedState extends _UploadedState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_InProgressState value) inProgress,
     required TResult Function(_AddedState value) added,
     required TResult Function(GenerateChangedState value) changed,
     required TResult Function(_UploadedState value) uploaded,
@@ -761,6 +916,7 @@ class _$_UploadedState extends _UploadedState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -773,6 +929,7 @@ class _$_UploadedState extends _UploadedState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -787,11 +944,11 @@ class _$_UploadedState extends _UploadedState {
 }
 
 abstract class _UploadedState extends GenerateState {
-  const factory _UploadedState(Schedule schedule) = _$_UploadedState;
+  const factory _UploadedState(final Schedule schedule) = _$_UploadedState;
   const _UploadedState._() : super._();
 
   @override
-  Schedule get schedule;
+  Schedule get schedule => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UploadedStateCopyWith<_UploadedState> get copyWith =>
@@ -868,6 +1025,7 @@ class _$_ErrorState extends _ErrorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Schedule schedule) initial,
+    required TResult Function(Schedule schedule) inProgress,
     required TResult Function(Schedule schedule) added,
     required TResult Function(Schedule schedule) changed,
     required TResult Function(Schedule schedule) uploaded,
@@ -880,6 +1038,7 @@ class _$_ErrorState extends _ErrorState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -892,6 +1051,7 @@ class _$_ErrorState extends _ErrorState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Schedule schedule)? initial,
+    TResult Function(Schedule schedule)? inProgress,
     TResult Function(Schedule schedule)? added,
     TResult Function(Schedule schedule)? changed,
     TResult Function(Schedule schedule)? uploaded,
@@ -908,6 +1068,7 @@ class _$_ErrorState extends _ErrorState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
+    required TResult Function(_InProgressState value) inProgress,
     required TResult Function(_AddedState value) added,
     required TResult Function(GenerateChangedState value) changed,
     required TResult Function(_UploadedState value) uploaded,
@@ -920,6 +1081,7 @@ class _$_ErrorState extends _ErrorState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -932,6 +1094,7 @@ class _$_ErrorState extends _ErrorState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
+    TResult Function(_InProgressState value)? inProgress,
     TResult Function(_AddedState value)? added,
     TResult Function(GenerateChangedState value)? changed,
     TResult Function(_UploadedState value)? uploaded,
@@ -946,79 +1109,16 @@ class _$_ErrorState extends _ErrorState {
 }
 
 abstract class _ErrorState extends GenerateState {
-  const factory _ErrorState(Schedule schedule) = _$_ErrorState;
+  const factory _ErrorState(final Schedule schedule) = _$_ErrorState;
   const _ErrorState._() : super._();
 
   @override
-  Schedule get schedule;
+  Schedule get schedule => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ErrorStateCopyWith<_ErrorState> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$GenerateEventTearOff {
-  const _$GenerateEventTearOff();
-
-  _GenerateEventAddDay addDay(String caption) {
-    return _GenerateEventAddDay(
-      caption,
-    );
-  }
-
-  _GenerateEventRemoveDay removeDay(Day day) {
-    return _GenerateEventRemoveDay(
-      day,
-    );
-  }
-
-  _GenerateEventAddPair addPair(
-      {required String title,
-      required String auditory,
-      required String additional,
-      required Day day}) {
-    return _GenerateEventAddPair(
-      title: title,
-      auditory: auditory,
-      additional: additional,
-      day: day,
-    );
-  }
-
-  _GenerateEventRemovePair removePair(Pair pair, Day day) {
-    return _GenerateEventRemovePair(
-      pair,
-      day,
-    );
-  }
-
-  _GenerateEventChangePair changePair(
-      {required Pair oldPair, required Pair newPair, required Day day}) {
-    return _GenerateEventChangePair(
-      oldPair: oldPair,
-      newPair: newPair,
-      day: day,
-    );
-  }
-
-  _GenerateEventChangeDay changeDay(
-      {required Day oldDay, required Day newDay}) {
-    return _GenerateEventChangeDay(
-      oldDay: oldDay,
-      newDay: newDay,
-    );
-  }
-
-  _GenerateEventUploadSchedule uploadSchedule(Schedule schedule) {
-    return _GenerateEventUploadSchedule(
-      schedule,
-    );
-  }
-}
-
-/// @nodoc
-const $GenerateEvent = _$GenerateEventTearOff();
 
 /// @nodoc
 mixin _$GenerateEvent {
@@ -1276,10 +1376,11 @@ class _$_GenerateEventAddDay extends _GenerateEventAddDay {
 }
 
 abstract class _GenerateEventAddDay extends GenerateEvent {
-  const factory _GenerateEventAddDay(String caption) = _$_GenerateEventAddDay;
+  const factory _GenerateEventAddDay(final String caption) =
+      _$_GenerateEventAddDay;
   const _GenerateEventAddDay._() : super._();
 
-  String get caption;
+  String get caption => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GenerateEventAddDayCopyWith<_GenerateEventAddDay> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1456,10 +1557,11 @@ class _$_GenerateEventRemoveDay extends _GenerateEventRemoveDay {
 }
 
 abstract class _GenerateEventRemoveDay extends GenerateEvent {
-  const factory _GenerateEventRemoveDay(Day day) = _$_GenerateEventRemoveDay;
+  const factory _GenerateEventRemoveDay(final Day day) =
+      _$_GenerateEventRemoveDay;
   const _GenerateEventRemoveDay._() : super._();
 
-  Day get day;
+  Day get day => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GenerateEventRemoveDayCopyWith<_GenerateEventRemoveDay> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1671,16 +1773,16 @@ class _$_GenerateEventAddPair extends _GenerateEventAddPair {
 
 abstract class _GenerateEventAddPair extends GenerateEvent {
   const factory _GenerateEventAddPair(
-      {required String title,
-      required String auditory,
-      required String additional,
-      required Day day}) = _$_GenerateEventAddPair;
+      {required final String title,
+      required final String auditory,
+      required final String additional,
+      required final Day day}) = _$_GenerateEventAddPair;
   const _GenerateEventAddPair._() : super._();
 
-  String get title;
-  String get auditory;
-  String get additional;
-  Day get day;
+  String get title => throw _privateConstructorUsedError;
+  String get auditory => throw _privateConstructorUsedError;
+  String get additional => throw _privateConstructorUsedError;
+  Day get day => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GenerateEventAddPairCopyWith<_GenerateEventAddPair> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1876,12 +1978,12 @@ class _$_GenerateEventRemovePair extends _GenerateEventRemovePair {
 }
 
 abstract class _GenerateEventRemovePair extends GenerateEvent {
-  const factory _GenerateEventRemovePair(Pair pair, Day day) =
+  const factory _GenerateEventRemovePair(final Pair pair, final Day day) =
       _$_GenerateEventRemovePair;
   const _GenerateEventRemovePair._() : super._();
 
-  Pair get pair;
-  Day get day;
+  Pair get pair => throw _privateConstructorUsedError;
+  Day get day => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GenerateEventRemovePairCopyWith<_GenerateEventRemovePair> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2097,14 +2199,14 @@ class _$_GenerateEventChangePair extends _GenerateEventChangePair {
 
 abstract class _GenerateEventChangePair extends GenerateEvent {
   const factory _GenerateEventChangePair(
-      {required Pair oldPair,
-      required Pair newPair,
-      required Day day}) = _$_GenerateEventChangePair;
+      {required final Pair oldPair,
+      required final Pair newPair,
+      required final Day day}) = _$_GenerateEventChangePair;
   const _GenerateEventChangePair._() : super._();
 
-  Pair get oldPair;
-  Pair get newPair;
-  Day get day;
+  Pair get oldPair => throw _privateConstructorUsedError;
+  Pair get newPair => throw _privateConstructorUsedError;
+  Day get day => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GenerateEventChangePairCopyWith<_GenerateEventChangePair> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2301,11 +2403,12 @@ class _$_GenerateEventChangeDay extends _GenerateEventChangeDay {
 
 abstract class _GenerateEventChangeDay extends GenerateEvent {
   const factory _GenerateEventChangeDay(
-      {required Day oldDay, required Day newDay}) = _$_GenerateEventChangeDay;
+      {required final Day oldDay,
+      required final Day newDay}) = _$_GenerateEventChangeDay;
   const _GenerateEventChangeDay._() : super._();
 
-  Day get oldDay;
-  Day get newDay;
+  Day get oldDay => throw _privateConstructorUsedError;
+  Day get newDay => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GenerateEventChangeDayCopyWith<_GenerateEventChangeDay> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2485,11 +2588,11 @@ class _$_GenerateEventUploadSchedule extends _GenerateEventUploadSchedule {
 }
 
 abstract class _GenerateEventUploadSchedule extends GenerateEvent {
-  const factory _GenerateEventUploadSchedule(Schedule schedule) =
+  const factory _GenerateEventUploadSchedule(final Schedule schedule) =
       _$_GenerateEventUploadSchedule;
   const _GenerateEventUploadSchedule._() : super._();
 
-  Schedule get schedule;
+  Schedule get schedule => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GenerateEventUploadScheduleCopyWith<_GenerateEventUploadSchedule>
       get copyWith => throw _privateConstructorUsedError;

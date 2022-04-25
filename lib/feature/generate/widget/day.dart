@@ -74,6 +74,9 @@ class _DayWidgetState extends State<DayWidget> {
             ...widget.day.pairs
                 .mapIndexed(
                   (i, e) => PairWidget(
+                    pair: e,
+                    day: widget.day,
+                    divider: widget.day.pairs.last != e,
                     onChange: (p) {
                       context.read<GenerateBloc>().add(
                             GenerateEvent.changePair(
@@ -83,11 +86,22 @@ class _DayWidgetState extends State<DayWidget> {
                             ),
                           );
                     },
-                    pair: e,
-                    divider: widget.day.pairs.last != e,
                   ),
                 )
-                .toList(growable: false),
+                .toList(),
+            TextButton(
+              onPressed: () {
+                context.read<GenerateBloc>().add(
+                      GenerateEvent.addPair(
+                        title: '',
+                        auditory: '',
+                        additional: '',
+                        day: widget.day,
+                      ),
+                    );
+              },
+              child: const Text('Добавить пару'),
+            )
           ],
         ),
       );

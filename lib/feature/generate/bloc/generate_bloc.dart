@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:schedule/feature/generate/model/day.dart';
@@ -12,6 +15,8 @@ class GenerateState with _$GenerateState {
   const GenerateState._();
 
   const factory GenerateState.initial(Schedule schedule) = _InitialState;
+
+  const factory GenerateState.inProgress(Schedule schedule) = _InProgressState;
 
   const factory GenerateState.added(Schedule schedule) = _AddedState;
 
@@ -81,23 +86,25 @@ class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
     Emitter emitter,
   ) async {
     try {
-      final s = state.schedule;
-      final days = List<Day>.from(s.days)
+      emitter.call(GenerateState.inProgress(state.schedule));
+      final days = List<Day>.of(state.schedule.days)
         ..add(
           Day(
             caption: event.caption,
             pairs: [
-              const Pair(
+              Pair(
                 title: '',
                 auditory: '',
                 additional: '',
+                hash: const Uuid().v4(),
               ),
             ],
             hash: const Uuid().v4(),
           ),
         );
       emitter.call(GenerateState.added(Schedule(days: days)));
-    } on Object catch (_) {
+    } on Object catch (e) {
+      log(e.toString());
       emitter.call(GenerateState.error(state.schedule));
     }
   }
@@ -107,6 +114,7 @@ class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
     Emitter emitter,
   ) async {
     try {
+      emitter.call(GenerateState.inProgress(state.schedule));
       final s = state.schedule;
       final days = List<Day>.of(s.days)..remove(event.day);
       emitter.call(_AddedState(Schedule(days: days)));
@@ -120,19 +128,21 @@ class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
     Emitter emitter,
   ) async {
     try {
-      final s = state.schedule;
+      emitter.call(GenerateState.inProgress(state.schedule));
       final day = event.day;
-      final index = s.days.indexOf(day);
-      day.pairs.add(
-        Pair(
-          title: event.title,
-          auditory: event.auditory,
-          additional: event.additional,
-        ),
-      );
-      s.days[index] = day;
-      emitter.call(_AddedState(s));
-    } on Object catch (_) {
+      final days = List<Day>.of(state.schedule.days);
+      final index = days.indexOf(day);
+      days[index].pairs.add(
+            Pair(
+              title: event.title,
+              auditory: event.auditory,
+              additional: event.additional,
+              hash: const Uuid().v4(),
+            ),
+          );
+      emitter.call(GenerateState.added(Schedule(days: days)));
+    } on Object catch (e) {
+      log(e.toString());
       emitter.call(GenerateState.error(state.schedule));
     }
   }
@@ -142,6 +152,7 @@ class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
     Emitter emitter,
   ) async {
     try {
+      emitter.call(GenerateState.inProgress(state.schedule));
       final s = state.schedule;
       final day = event.day;
       final index = s.days.indexOf(day);
@@ -169,8 +180,9 @@ class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
     Emitter emitter,
   ) async {
     try {
+      emitter.call(GenerateState.initial(state.schedule));
       final s = state.schedule;
-      final days = List<Day>.from(s.days);
+      final days = List<Day>.of(s.days);
       final day = event.day;
       final index = days.indexOf(day);
       final pIndex = days[index].pairs.indexOf(event.oldPair);
@@ -186,6 +198,7 @@ class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
     Emitter emitter,
   ) async {
     try {
+      emitter.call(GenerateState.inProgress(state.schedule));
       final s = state.schedule;
       final index = s.days.indexOf(event.oldDay);
       s.days[index] = event.newDay;

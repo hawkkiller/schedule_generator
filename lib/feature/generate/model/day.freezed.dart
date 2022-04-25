@@ -12,34 +12,11 @@ part of 'day.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Day _$DayFromJson(Map<String, dynamic> json) {
   return _Day.fromJson(json);
 }
-
-/// @nodoc
-class _$DayTearOff {
-  const _$DayTearOff();
-
-  _Day call(
-      {required String caption,
-      List<Pair> pairs = const <Pair>[],
-      @JsonKey(ignore: true) String? hash}) {
-    return _Day(
-      caption: caption,
-      pairs: pairs,
-      hash: hash,
-    );
-  }
-
-  Day fromJson(Map<String, Object?> json) {
-    return Day.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Day = _$DayTearOff();
 
 /// @nodoc
 mixin _$Day {
@@ -145,8 +122,8 @@ class _$_Day implements _Day {
 
   @override
   final String caption;
-  @JsonKey()
   @override
+  @JsonKey()
   final List<Pair> pairs;
   @override
   @JsonKey(ignore: true)
@@ -167,6 +144,7 @@ class _$_Day implements _Day {
             const DeepCollectionEquality().equals(other.hash, hash));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -187,19 +165,19 @@ class _$_Day implements _Day {
 
 abstract class _Day implements Day {
   const factory _Day(
-      {required String caption,
-      List<Pair> pairs,
-      @JsonKey(ignore: true) String? hash}) = _$_Day;
+      {required final String caption,
+      final List<Pair> pairs,
+      @JsonKey(ignore: true) final String? hash}) = _$_Day;
 
   factory _Day.fromJson(Map<String, dynamic> json) = _$_Day.fromJson;
 
   @override
-  String get caption;
+  String get caption => throw _privateConstructorUsedError;
   @override
-  List<Pair> get pairs;
+  List<Pair> get pairs => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  String? get hash;
+  String? get hash => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$DayCopyWith<_Day> get copyWith => throw _privateConstructorUsedError;
