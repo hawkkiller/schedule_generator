@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schedule/feature/generate/bloc/generate_bloc.dart';
 import 'package:schedule/feature/generate/model/day.dart';
 import 'package:schedule/feature/generate/model/pair.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PairWidget extends StatefulWidget {
   const PairWidget({
@@ -76,60 +76,9 @@ class _PairWidgetState extends State<PairWidget> {
                     GenerateEvent.removePair(pair, widget.day),
                   ),
             ),
-            Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text('Название'),
-                ),
-                Flexible(
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                    ),
-                    maxLines: 5,
-                    minLines: 1,
-                    controller: titleController,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text('Аудитория'),
-                ),
-                Flexible(
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                    ),
-                    maxLines: 5,
-                    minLines: 1,
-                    controller: auditoryController,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Text('Код'),
-                ),
-                Flexible(
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                    ),
-                    maxLines: 5,
-                    minLines: 1,
-                    controller: additionalController,
-                  ),
-                ),
-              ],
-            ),
+            AppField(title: 'Урок', controller: titleController),
+            AppField(title: 'Аудитория', controller: auditoryController),
+            AppField(title: 'Код', controller: additionalController),
             if (widget.divider)
               const Divider(
                 height: 0,
@@ -137,5 +86,33 @@ class _PairWidgetState extends State<PairWidget> {
               ),
           ],
         ),
+      );
+}
+
+class AppField extends StatelessWidget {
+  const AppField({
+    required this.title,
+    required this.controller,
+    Key? key,
+  }) : super(key: key);
+
+  final String title;
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) => Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Text(title),
+          ),
+          Flexible(
+            child: TextField(
+              maxLines: 5,
+              minLines: 1,
+              controller: controller,
+            ),
+          ),
+        ],
       );
 }

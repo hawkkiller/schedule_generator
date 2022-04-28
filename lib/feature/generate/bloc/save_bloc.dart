@@ -36,6 +36,11 @@ class SaveBloc extends Bloc<SaveEvent, SaveState> {
   }
 
   Future<void> _save(SaveEvent event, Emitter emitter) async {
+    // if content is empty, do nothing
+    if (event.content.isEmpty) {
+      return;
+    }
+
     await FileSaver.save(
       filename: event.filename,
       content: event.content,

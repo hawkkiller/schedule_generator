@@ -13,4 +13,6 @@ class Schedule with _$Schedule {
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>
       _$ScheduleFromJson(json);
+
+  factory Schedule.empty() => const Schedule(days: <Day>[]);
 }

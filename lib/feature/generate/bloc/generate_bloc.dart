@@ -67,7 +67,7 @@ class GenerateEvent with _$GenerateEvent {
 }
 
 class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
-  GenerateBloc() : super(const GenerateState.initial(Schedule(days: []))) {
+  GenerateBloc() : super(GenerateState.initial(Schedule.empty())) {
     on<GenerateEvent>(
       (event, emitter) => event.map(
         addDay: (e) => _addDay(e, emitter),

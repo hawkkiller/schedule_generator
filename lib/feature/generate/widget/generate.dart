@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schedule/feature/generate/bloc/generate_bloc.dart';
 import 'package:schedule/feature/generate/bloc/save_bloc.dart';
 import 'package:schedule/feature/generate/bloc/upload_bloc.dart';
+import 'package:schedule/feature/generate/model/schedule.dart';
 import 'package:schedule/feature/generate/widget/day.dart';
 
 class Generate extends StatelessWidget {
@@ -53,14 +54,16 @@ class Generate extends StatelessWidget {
                       actions: [
                         IconButton(
                           onPressed: () async {
+                            final schedule =
+                                context.read<GenerateBloc>().state.schedule;
+                            if (schedule == Schedule.empty()) {
+                              return;
+                            }
                             context.read<SaveBloc>().add(
                                   SaveEvent.save(
                                     filename: 'расписание',
                                     content: jsonEncode(
-                                      context
-                                          .read<GenerateBloc>()
-                                          .state
-                                          .schedule,
+                                      schedule,
                                     ),
                                   ),
                                 );
