@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:schedule/feature/generate/model/converter.dart';
 
 part 'pair.freezed.dart';
 

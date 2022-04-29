@@ -75,6 +75,7 @@ class _DayWidgetState extends State<DayWidget> {
                 .mapIndexed(
                   (i, e) => PairWidget(
                     pair: e,
+                    key: ValueKey(e.hash),
                     day: widget.day,
                     divider: widget.day.pairs.last != e,
                     onChange: (p) {

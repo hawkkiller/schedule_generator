@@ -9,12 +9,13 @@ part of 'day.dart';
 _$_Day _$$_DayFromJson(Map<String, dynamic> json) => _$_Day(
       caption: json['caption'] as String,
       pairs: (json['pairs'] as List<dynamic>?)
-              ?.map((e) => Pair.fromJson(e as Map<String, dynamic>))
+              ?.map((e) =>
+                  const PairConverter().fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <Pair>[],
     );
 
 Map<String, dynamic> _$$_DayToJson(_$_Day instance) => <String, dynamic>{
       'caption': instance.caption,
-      'pairs': instance.pairs,
+      'pairs': instance.pairs.map(const PairConverter().toJson).toList(),
     };

@@ -21,6 +21,7 @@ Day _$DayFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Day {
   String get caption => throw _privateConstructorUsedError;
+  @PairConverter()
   List<Pair> get pairs => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   String? get hash => throw _privateConstructorUsedError;
@@ -35,7 +36,9 @@ abstract class $DayCopyWith<$Res> {
   factory $DayCopyWith(Day value, $Res Function(Day) then) =
       _$DayCopyWithImpl<$Res>;
   $Res call(
-      {String caption, List<Pair> pairs, @JsonKey(ignore: true) String? hash});
+      {String caption,
+      @PairConverter() List<Pair> pairs,
+      @JsonKey(ignore: true) String? hash});
 }
 
 /// @nodoc
@@ -75,7 +78,9 @@ abstract class _$DayCopyWith<$Res> implements $DayCopyWith<$Res> {
       __$DayCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String caption, List<Pair> pairs, @JsonKey(ignore: true) String? hash});
+      {String caption,
+      @PairConverter() List<Pair> pairs,
+      @JsonKey(ignore: true) String? hash});
 }
 
 /// @nodoc
@@ -115,7 +120,7 @@ class __$DayCopyWithImpl<$Res> extends _$DayCopyWithImpl<$Res>
 class _$_Day implements _Day {
   const _$_Day(
       {required this.caption,
-      this.pairs = const <Pair>[],
+      @PairConverter() this.pairs = const <Pair>[],
       @JsonKey(ignore: true) this.hash});
 
   factory _$_Day.fromJson(Map<String, dynamic> json) => _$$_DayFromJson(json);
@@ -124,6 +129,7 @@ class _$_Day implements _Day {
   final String caption;
   @override
   @JsonKey()
+  @PairConverter()
   final List<Pair> pairs;
   @override
   @JsonKey(ignore: true)
@@ -166,7 +172,7 @@ class _$_Day implements _Day {
 abstract class _Day implements Day {
   const factory _Day(
       {required final String caption,
-      final List<Pair> pairs,
+      @PairConverter() final List<Pair> pairs,
       @JsonKey(ignore: true) final String? hash}) = _$_Day;
 
   factory _Day.fromJson(Map<String, dynamic> json) = _$_Day.fromJson;
@@ -174,6 +180,7 @@ abstract class _Day implements Day {
   @override
   String get caption => throw _privateConstructorUsedError;
   @override
+  @PairConverter()
   List<Pair> get pairs => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
